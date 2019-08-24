@@ -1,0 +1,39 @@
+.app{
+  margin-top: 1.6rem;
+  margin-bottom: 1.6rem;
+  background-color: $color-background;
+  border-radius: 8px;
+  padding: 0 2rem;
+  min-height: $app-min-height;
+  @extend %stretch;
+  @extend %wrapper;
+  @include screen-sm {
+    padding: 0 3rem;
+  }
+}
+
+.app__header{
+  padding-top: 3.5rem;
+  @extend %center;
+  @include screen-sm {
+    padding-top: 3.2rem;
+  }
+}
+
+.app__main{
+  flex-grow: 1;
+  margin-top: 1.6rem;
+  margin-bottom: 2.2rem;
+  @extend %stretch;
+  @include screen-sm {
+    margin-bottom: 3.6rem;
+  }
+}
+
+.app__footer{
+  padding-bottom: 2.7rem;
+  @extend %center;
+  @include screen-sm {
+    padding-bottom: 2.9rem;
+  }
+}
