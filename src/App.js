@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import {Copyright} from "./assets/svg";
 import {Header, Content} from "./components";
-import { connect } from 'react-redux';
-import {fetchFilms} from "./redux/actions";
+// import { connect } from 'react-redux';
+// import {fetchFilms} from "./redux/actions";
+import {withRedux} from "./redux/wrapper";
 
 class App extends Component{
 
@@ -25,12 +26,5 @@ App.propTypes = {
   onFetch: PropTypes.func,
 };
 
-
-const mapDispatchToProps = dispatch => {
-  return {
-    onFetch: () => dispatch(fetchFilms())
-  }
-};
-
-const connectedComponent = connect(null, mapDispatchToProps) (App);
+const connectedComponent = withRedux(App);
 export {connectedComponent as App}

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import {ArrowOpen} from "../assets/svg";
-import { connect } from 'react-redux';
+import {withRedux} from "../redux/wrapper";
 
 class Movies extends Component{
 
@@ -21,11 +21,5 @@ Movies.propTypes = {
   films: PropTypes.array,
 };
 
-const mapStateToProps = state => {
-  return {
-    films: state.films
-  }
-};
-
-const connectedComponent = connect(mapStateToProps, null) (Movies);
+const connectedComponent = withRedux(Movies);
 export {connectedComponent as Movies}
