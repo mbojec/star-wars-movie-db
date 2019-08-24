@@ -1,0 +1,31 @@
+.app{
+  @extend %wrapper;
+  background-color: $color-background;
+  border-radius: 8px;
+  padding: 0 2rem;
+  @include screen-sm {
+    padding: 0 3rem;
+  }
+}
+
+.app__header{
+  margin-top: 3.5rem;
+  @include screen-sm {
+    margin-top: 3.2rem;
+  }
+}
+
+.app__main{
+  margin-top: 1.6rem;
+  margin-bottom: 2.2rem;
+  @include screen-sm {
+    margin-bottom: 3.6rem;
+  }
+}
+
+.app__footer{
+  margin-bottom: 2.7rem;
+  @include screen-sm {
+    margin-bottom: 2.9rem;
+  }
+}
