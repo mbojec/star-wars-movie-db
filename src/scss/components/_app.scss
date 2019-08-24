@@ -1,17 +1,20 @@
 .app{
-  @extend %wrapper;
+  margin-top: 1.6rem;
+  margin-bottom: 1.6rem;
   background-color: $color-background;
   border-radius: 8px;
   padding: 0 2rem;
+  @extend %wrapper;
   @include screen-sm {
     padding: 0 3rem;
   }
 }
 
 .app__header{
-  margin-top: 3.5rem;
+  padding-top: 3.5rem;
+  @extend %center;
   @include screen-sm {
-    margin-top: 3.2rem;
+    padding-top: 3.2rem;
   }
 }
 
@@ -24,8 +27,9 @@
 }
 
 .app__footer{
-  margin-bottom: 2.7rem;
+  padding-bottom: 2.7rem;
+  @extend %center;
   @include screen-sm {
-    margin-bottom: 2.9rem;
+    padding-bottom: 2.9rem;
   }
 }
