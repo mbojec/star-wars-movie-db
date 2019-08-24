@@ -1,3 +1,6 @@
 export {Copyright} from './Copyright'
 export {Logo} from './Logo'
 export {LogoMobile} from './Logo@mobile'
+export {ArrowOpen} from './ArrowOpen'
+export {ArrowClose} from './ArrowClose'
+export {Loader} from './Loader'
