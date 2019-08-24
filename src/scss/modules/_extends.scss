@@ -11,3 +11,10 @@
   justify-content: center;
   align-items: center;
 }
+
+%stretch{
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: stretch;
+  justify-content: space-between;
+}
