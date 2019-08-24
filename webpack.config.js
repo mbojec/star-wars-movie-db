@@ -35,7 +35,8 @@ module.exports = function (env) {
 
     const js = {
         test: /\.js$/, exclude: /node_modules/,
-        use: {
+        use: [
+          {
             loader: 'babel-loader',
             options: {
                 presets: [
@@ -49,7 +50,8 @@ module.exports = function (env) {
                     '@babel/plugin-syntax-dynamic-import'
                 ]
             }
-        }
+          }, "eslint-loader"
+        ]
     };
 
     const css = {
