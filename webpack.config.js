@@ -120,8 +120,8 @@ module.exports = function (env) {
                 name: isProd
                     ? '[name].[hash].[ext]'
                     : '[name].[ext]',
-                publicPath: 'fonts',
-                outputPath: 'fonts'
+                publicPath: `${entryPath}/assets/fonts`,
+                outputPath: `${entryPath}/assets/fonts`
             }
         }
     };
