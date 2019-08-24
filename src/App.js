@@ -1,8 +1,16 @@
 import React, { Component } from 'react';
 import {Copyright} from "./assets/svg";
 import {Header, Content} from "./components";
+import { connect } from 'react-redux';
+import {fetchFilms} from "./redux/actions";
 
-export class App extends Component{
+class App extends Component{
+
+  componentDidMount() {
+    // eslint-disable-next-line react/prop-types
+    this.props.onFetch();
+  }
+
   render() {
     return (
       <div className={'app'}>
@@ -13,3 +21,13 @@ export class App extends Component{
     )
   }
 }
+
+
+const mapDispatchToProps = dispatch => {
+  return {
+    onFetch: () => dispatch(fetchFilms())
+  }
+};
+
+const connectedComponent = connect(null, mapDispatchToProps) (App);
+export {connectedComponent as App}
