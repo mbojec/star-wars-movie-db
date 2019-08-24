@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import {Copyright} from "./assets/svg";
 import {Header, Content} from "./components";
 import { connect } from 'react-redux';
@@ -7,7 +8,6 @@ import {fetchFilms} from "./redux/actions";
 class App extends Component{
 
   componentDidMount() {
-    // eslint-disable-next-line react/prop-types
     this.props.onFetch();
   }
 
@@ -21,6 +21,9 @@ class App extends Component{
     )
   }
 }
+App.propTypes = {
+  onFetch: PropTypes.func,
+};
 
 
 const mapDispatchToProps = dispatch => {

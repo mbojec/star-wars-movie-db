@@ -14,7 +14,7 @@ const reducer = (state = initialState, action) => {
       };
     case FETCH_FILMS_SUCCESS:
       return {
-        films: action.films,
+        films: action.films.data.results,
         isLoading: false
       };
     default:

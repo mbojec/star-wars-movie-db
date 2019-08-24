@@ -51,5 +51,15 @@
   }
 }
 
+.content__list{
+  width: 100%;
+  height: 100%;
+}
+
+.content__list__item{
+  @extend .content__card;
+  margin-top: 1.6rem;
+}
+
 
 
