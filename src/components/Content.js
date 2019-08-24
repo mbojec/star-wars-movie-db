@@ -1,13 +1,17 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import {ArrowOpen, Loader} from "../assets/svg";
+import { connect } from 'react-redux';
+import {Movies} from "./Movies";
 
-export class Content extends Component{
+class Content extends Component{
 
   render() {
+
     return(
       <div className={'content'}>
         <section className={'content__section content__section__loader'}>
-          <Loader/>
+          {this.props.films.length === 0? <Loader/> : <Movies/>}
         </section>
         <hr className={'content__divider'}/>
         <section className={'content__section'}>
@@ -17,3 +21,15 @@ export class Content extends Component{
     )
   }
 }
+Content.propTypes = {
+  films: PropTypes.array,
+};
+
+const mapStateToProps = state => {
+  return {
+    films: state.films
+  }
+};
+
+const connectedComponent = connect(mapStateToProps, null) (Content);
+export {connectedComponent as Content}

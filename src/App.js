@@ -1,8 +1,17 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import {Copyright} from "./assets/svg";
 import {Header, Content} from "./components";
+// import { connect } from 'react-redux';
+// import {fetchFilms} from "./redux/actions";
+import {withRedux} from "./redux/wrapper";
 
-export class App extends Component{
+class App extends Component{
+
+  componentDidMount() {
+    this.props.onFetch();
+  }
+
   render() {
     return (
       <div className={'app'}>
@@ -13,3 +22,9 @@ export class App extends Component{
     )
   }
 }
+App.propTypes = {
+  onFetch: PropTypes.func,
+};
+
+const connectedComponent = withRedux(App);
+export {connectedComponent as App}
