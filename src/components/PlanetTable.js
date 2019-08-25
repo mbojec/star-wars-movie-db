@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import {PlanetRow} from "./PlanetRow";
+import {Sort} from "../assets/svg";
 
 class PlanetsTable extends Component{
 
@@ -11,17 +12,16 @@ class PlanetsTable extends Component{
           <thead>
           <tr>
             <th className={'table__planet-name'}>Planet name</th>
-            <th>Rotation period</th>
-            <th>Orbital period</th>
-            <th>Diameter</th>
-            <th>Climate</th>
-            <th>Surface water</th>
-            <th>Population</th>
+            <th className={'table__header'}><p className={'table__header__label'}>Rotation period</p><span className={'table__header__icon'}><Sort/></span></th>
+            <th className={'table__header'}><p className={'table__header__label'}>Orbital period</p><span className={'table__header__icon'}><Sort/></span></th>
+            <th className={'table__header'}><p className={'table__header__label'}>Diameter</p><span className={'table__header__icon'}><Sort/></span></th>
+            <th className={'table__header'}><p className={'table__header__label'}>Climate</p><span className={'table__header__icon'}><Sort/></span></th>
+            <th className={'table__header'}><p className={'table__header__label'}>Surface water</p><span className={'table__header__icon'}><Sort/></span></th>
+            <th className={'table__header'}><p className={'table__header__label'}>Population</p><span className={'table__header__icon'}><Sort/></span></th>
           </tr>
           </thead>
           <tbody>
-          {/* eslint-disable-next-line react/jsx-key */}
-          {this.props.planets.map((planet) => <PlanetRow planet={planet}/> )}
+          {this.props.planets.map((planet, index) => <PlanetRow key={index} planet={planet}/> )}
           </tbody>
         </table>
       </div>
