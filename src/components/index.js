@@ -1,3 +1,4 @@
 export {Header} from './Header';
 export {Content} from './Content';
-export {Movies} from './Movies'
+export {MoviesListItem} from './MoviesListItem'
+export {MoviesList} from './MoviesList'
