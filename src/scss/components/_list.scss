@@ -42,6 +42,26 @@
     #{ $self }__line{
       box-shadow: 0 4px 12px $color-card-opened-shadow;
     }
+
+    #{ $self }__icon{
+      transform: rotate(180deg);
+
+      &__arrow--background {
+        fill: $color-secondary;
+        max-height: 100rem;
+        transition-duration: 0.2s;
+        transition-delay: 0.2s;
+        transition-property: fill;
+      }
+    }
+  }
+
+  &__icon{
+    transition: transform 0.3s ease-in-out;
+    &__arrow--background{
+      transition-duration: 0.2s;
+      transition-delay: 0.2s;
+    }
   }
 
   &__line{

@@ -13,12 +13,12 @@ class MoviesListItem extends Component {
   render () {
     return (
       <div
-        className={`list-item, ${this.state.opened && 'list-item--opened'}`} onClick={() => this.setState({opened: !this.state.opened})}>
+        className={`list-item, ${this.state.opened && 'list-item--opened'}`} >
         <div className={'list-item__line'}>
           <p className={'list-item__title'}>
             {this.props.title}
           </p>
-          <ArrowOpen/>
+          <div className={'list-item__icon'} onClick={() => this.setState({opened: !this.state.opened})}><ArrowOpen/></div>
         </div>
         <div className={'list-item__inner'}>
           <div className={'list-item__content'}>
