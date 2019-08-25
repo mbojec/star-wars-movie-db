@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import {ArrowOpen, LoaderSmall} from "../assets/svg";
 import PropTypes from 'prop-types';
+import {PlanetsTable} from "./index";
 
-// const paragraph = 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet natus sint provident vel ab ' +
-//   'reprehenderit cum soluta, suscipit facere nisi sed earum repellendus fuga debitis, nam molestiae minima voluptates possimus.'
 
 class MoviesListItem extends Component {
 
@@ -38,7 +37,7 @@ class MoviesListItem extends Component {
         </div>
         <div className={'list-item__inner'}>
           <div className={'list-item__content'}>
-            <LoaderSmall/>
+            {this.props.planets.length === 0? <LoaderSmall/>: <PlanetsTable index={this.props.index} planets={this.props.planets}/>}
           </div>
         </div>
       </div>

@@ -1,0 +1,25 @@
+.table {
+  width: 100%;
+
+  &__planet-name{
+    color: $color-primary;
+  }
+
+  table {
+    width: 100%;
+  }
+
+  th {
+    font-weight: normal;
+  }
+
+  td, th {
+    text-align: right;
+    font-size: 12px;
+    line-height: 14px;
+  }
+
+  td{
+    padding-top: 2rem;
+  }
+}
