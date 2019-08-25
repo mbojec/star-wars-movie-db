@@ -6,10 +6,8 @@ import {PlanetsTable} from "./index";
 
 class MoviesListItem extends Component {
 
-
   state = {
     opened: false
-
   };
 
   onCollapse(){
