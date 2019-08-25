@@ -4,13 +4,18 @@ import PropTypes from 'prop-types';
 import {withRedux} from "../redux/wrapper";
 
 class MoviesList extends Component {
+
+  onClick = index =>{
+    this.props.onFetchPlanet(this.props.films[index].planets, index)
+  };
+
   render () {
     return (
         <ul className={'list'}>
-          {this.props.films.map((singleMovie) => {
+          {this.props.films.map((singleMovie, index) => {
             return (
               <li className={'list__item'} key={singleMovie.episode_id}>
-                <MoviesListItem title={singleMovie.title} />
+                <MoviesListItem title={singleMovie.title} planets={singleMovie.planetsDetail} index={index} onPress={(index) => this.onClick(index)}/>
               </li>
             )
           })}
@@ -20,6 +25,7 @@ class MoviesList extends Component {
 }
 MoviesList.propTypes = {
   films: PropTypes.array,
+  onFetchPlanet: PropTypes.func,
 };
 
 const connectedComponent = withRedux(MoviesList);

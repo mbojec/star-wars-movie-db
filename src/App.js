@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import {Copyright} from "./assets/svg";
 import {Header, Content} from "./components";
-// import { connect } from 'react-redux';
-// import {fetchFilms} from "./redux/actions";
 import {withRedux} from "./redux/wrapper";
 
 class App extends Component{
