@@ -24,6 +24,7 @@ export const fetchFilms = () => (dispatch) => {
     .then(res => dispatch(filmsFetched(res)));
 };
 
+//try catch
 export const fetchPlanets = (planets, index) => (dispatch) => {
   for(let planet of planets){
     axios.get(planet, {headers: {"Content-Type": "application/json"}})
