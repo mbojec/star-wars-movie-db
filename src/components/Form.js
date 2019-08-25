@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {Search} from '../assets/svg'
 
 class Form extends Component{
 
@@ -26,13 +27,16 @@ class Form extends Component{
               </div>
               <div className={'col-12 form__planet-section'}>
                 <label className={'form__label'}>Add planet</label>
-                <input onBlur={() => this.handleTitleValidation()} name={'title'} className={'form__input'} type={'text'} placeholder={'Search for the planet in the database'} value={this.state.title} onChange={e => this.handleChange(e)}/>
-              </div>
-              <div className={'col-12 form__btn-section'}>
-                <div className={'form__submit-btn'}>
-                  <input type={"submit"} value={'ADD MOVIE'}/>
+                <div className={'form__planet-section__input-section'}>
+                  <input onBlur={() => this.handleTitleValidation()} name={'title'} className={'form__input--planet'} type={'text'} placeholder={'Search for the planet in the database'} value={this.state.title} onChange={e => this.handleChange(e)}/>
+                  <Search/>
                 </div>
               </div>
+            </div>
+            <div className={'row form__btn-section'}>
+                <div className={'col-12 col-sm-3 form__submit-btn'}>
+                  <input type={"submit"} value={'ADD MOVIE'}/>
+                </div>
             </div>
           </form>
         </div>
