@@ -1,8 +1,8 @@
-import {FETCH_FILMS_SUCCESS, FETCHING_FILMS} from "./actions";
+import {FETCH_FILMS_SUCCESS, FETCHING_FILMS, PLANET_FETCHED} from "./actions";
 
 const initialState = {
   films: [],
-  isLoading: true
+  isLoading: true,
 };
 
 const reducer = (state = initialState, action) => {
@@ -12,11 +12,27 @@ const reducer = (state = initialState, action) => {
         ...state,
         isLoading: true
       };
-    case FETCH_FILMS_SUCCESS:
+    case FETCH_FILMS_SUCCESS:{
+      const filmArray = [];
+      const films = action.films.data.results;
+      for(let film of films){
+        let newFilm = {...film, planetsDetail : []};
+        filmArray.push(newFilm);
+      }
       return {
-        films: action.films.data.results,
+        films: filmArray,
         isLoading: false
       };
+    }
+
+    case PLANET_FETCHED:{
+      let filmsCopy = [...state.films];
+      filmsCopy[action.index].planetsDetail.push(action.planets.data);
+      return {
+        ...state,
+        films: filmsCopy
+      };
+    }
     default:
       return state;
   }

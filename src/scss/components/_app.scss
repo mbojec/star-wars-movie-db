@@ -10,30 +10,30 @@
   @include screen-sm {
     padding: 0 3rem;
   }
-}
 
-.app__header{
-  padding-top: 3.5rem;
-  @extend %center;
-  @include screen-sm {
-    padding-top: 3.2rem;
+  &__header{
+    padding-top: 3.5rem;
+    @extend %center;
+    @include screen-sm {
+      padding-top: 3.2rem;
+    }
   }
-}
 
-.app__main{
-  flex-grow: 1;
-  margin-top: 1.6rem;
-  margin-bottom: 2.2rem;
-  @extend %stretch;
-  @include screen-sm {
-    margin-bottom: 3.6rem;
+  &__main{
+    flex-grow: 1;
+    margin-top: 1.6rem;
+    margin-bottom: 2.2rem;
+    @extend %stretch;
+    @include screen-sm {
+      margin-bottom: 3.6rem;
+    }
   }
-}
 
-.app__footer{
-  padding-bottom: 2.7rem;
-  @extend %center;
-  @include screen-sm {
-    padding-bottom: 2.9rem;
+  &__footer{
+    padding-bottom: 2.7rem;
+    @extend %center;
+    @include screen-sm {
+      padding-bottom: 2.9rem;
+    }
   }
 }

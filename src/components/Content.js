@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import {ArrowOpen, Loader} from "../assets/svg";
 import { connect } from 'react-redux';
-import {Movies} from "./Movies";
+import {MoviesList} from "./MoviesList";
 
 class Content extends Component{
 
@@ -11,7 +11,7 @@ class Content extends Component{
     return(
       <div className={'content'}>
         <section className={'content__section content__section__loader'}>
-          {this.props.films.length === 0? <Loader/> : <Movies/>}
+          {this.props.films.length === 0? <Loader/> : <MoviesList/>}
         </section>
         <hr className={'content__divider'}/>
         <section className={'content__section'}>
