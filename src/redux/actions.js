@@ -26,7 +26,6 @@ export const fetchFilms = () => (dispatch) => {
 
 export const fetchPlanets = (planets, index) => (dispatch) => {
   for(let planet of planets){
-    console.log(planet);
     axios.get(planet, {headers: {"Content-Type": "application/json"}})
       .then(res => dispatch(planetFetched(res, index)));
   }
