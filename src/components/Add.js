@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {ArrowOpen} from "../assets/svg";
+import {Form} from "./Form";
 
 class Add extends Component{
 
@@ -23,8 +24,8 @@ class Add extends Component{
             <div className={'list-item__icon'} onClick={() => this.onCollapse()}><ArrowOpen/></div>
           </div>
           <div className={'list-item__inner'}>
-            <div className={'list-item__content'}>
-              nothing
+            <div className={'list-item__content form'}>
+              <Form/>
             </div>
           </div>
         </div>
