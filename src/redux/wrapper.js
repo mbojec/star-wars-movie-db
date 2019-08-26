@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import {fetchFilms, fetchPlanets, searchPlanets, saveQueryPlanet, deleteQueryPlanet} from "./actions";
+import {fetchFilms, fetchPlanets, searchPlanets, saveQueryPlanet, deleteQueryPlanet, saveCustomFilm} from "./actions";
 
 export function withRedux(WrappedComponent) {
   class withReduxComponent extends Component {
@@ -15,7 +15,8 @@ export function withRedux(WrappedComponent) {
       onFetchPlanet: (planets, index) => dispatch(fetchPlanets(planets, index)),
       onFetchPlanetsQuery: (query) => dispatch(searchPlanets(query)),
       onSaveQueryPlanet: (savedPlanet) => dispatch(saveQueryPlanet(savedPlanet)),
-      onDeleteQueryPlanet: (deletedPlanet) => dispatch(deleteQueryPlanet(deletedPlanet))
+      onDeleteQueryPlanet: (deletedPlanet) => dispatch(deleteQueryPlanet(deletedPlanet)),
+      onSaveCustomFilm: (customFilm) => dispatch(saveCustomFilm(customFilm))
     }
   };
 
@@ -23,7 +24,8 @@ export function withRedux(WrappedComponent) {
     return {
       films: state.films,
       queryPlanets: state.queryPlanets,
-      savedQueryPlanets: state.savedQueryPlanets
+      savedQueryPlanets: state.savedQueryPlanets,
+      customFilms: state.customFilms
     }
   };
 

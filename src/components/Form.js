@@ -32,8 +32,9 @@ class Form extends Component{
   }
 
   validateForm(){
-    const titleValidation = this.state.validTitle;
-    if(titleValidation){
+    const titleLengthValidation = this.state.validTitleLength;
+    const titleUpperCaseValidation = this.state.validTitleUpperCase;
+    if(titleLengthValidation && titleUpperCaseValidation){
       this.save();
       this.setState({
         title: '',
@@ -46,7 +47,11 @@ class Form extends Component{
   }
 
   save(){
-    console.log('movie saved');
+    const customFilm = {
+      title: this.state.title,
+      planetsDetail: this.props.savedQueryPlanets
+    };
+    this.props.onSaveCustomFilm(customFilm);
   }
 
   savePlanet(planet){
@@ -124,6 +129,7 @@ Form.propTypes = {
   onFetchPlanetsQuery: PropTypes.func,
   onSaveQueryPlanet: PropTypes.func,
   onDeleteQueryPlanet: PropTypes.func,
+  onSaveCustomFilm: PropTypes.func
 };
 
 const connectedComponent = withRedux(Form);
