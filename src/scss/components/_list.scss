@@ -31,6 +31,14 @@
       transition-property: max-height;
     }
 
+    #{ $self }__inner--form{
+      max-height: 100rem;
+      transition-timing-function: cubic-bezier(0.895, 0.03, 0.685, 0.22);
+      transition-duration: 0.5s;
+      transition-property: max-height;
+      overflow: unset;
+    }
+
     #{ $self }__content{
       opacity: 1;
       transform: translateY(0);
@@ -97,6 +105,16 @@
     box-shadow: 0 2px 1px $color-card-closed-shadow;
   }
 
+  &__inner--form{
+    overflow: hidden;
+    max-height: 0;
+    transition-duration: 0.5s;
+    transition-property: max-height;
+    z-index: 1;
+    position: relative;
+    box-shadow: 0 2px 1px $color-card-closed-shadow;
+  }
+
   &__content{
     opacity: 0;
     transform: translateY(-1rem);
@@ -109,12 +127,5 @@
       padding: 2rem 1.6rem 2.9rem 1.6rem;
     }
     @extend %center;
-  }
-
-  &__paragraph{
-    font-size: 1rem;
-    color: gray;
-    font-weight: 300;
-    line-height: 1.3;
   }
 }

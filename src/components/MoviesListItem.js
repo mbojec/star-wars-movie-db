@@ -6,10 +6,8 @@ import {PlanetsTable} from "./index";
 
 class MoviesListItem extends Component {
 
-
   state = {
     opened: false
-
   };
 
   onCollapse(){
@@ -21,11 +19,6 @@ class MoviesListItem extends Component {
   }
 
   render () {
-    if (this.props.planets.length === 0 ){
-      console.log('empty');
-    } else {
-      console.log(this.props.planets);
-    }
     return (
       <div
         className={`list-item ${this.state.opened && 'list-item--opened'}`} >

@@ -1,0 +1,164 @@
+.form-container{
+  width: 100%;
+  height: 100%;
+
+  @include screen-sm{
+    padding: 0 calc(100% * (1 / 10));
+  }
+}
+
+.form{
+  padding: 0;
+
+  &__label{
+    display: block;
+    font-size: 12px;
+    line-height: 14px;
+    color: $color-label;
+  }
+
+  &__input{
+    margin-top: 0.5rem;
+    outline: 0;
+    border: none;
+    width: 100%;
+    font-size: 1.6rem;
+    line-height: 1.9rem;
+    padding-bottom: 0.7rem;
+    border-bottom: 1px solid $color-divider;
+    &::placeholder{
+      color: $color-hint;
+    }
+
+    &--planet{
+      margin-top: 0.5rem;
+      outline: 0;
+      border: none;
+      flex-grow: 1;
+      font-size: 1.6rem;
+      line-height: 1.9rem;
+      padding-bottom: 0.7rem;
+      background-color: transparent;
+
+      &::placeholder{
+        color: $color-hint;
+      }
+
+    }
+  }
+
+  &__submit-btn{
+    padding: 0;
+
+    input{
+      width: 100%;
+      font-size: 1.2rem;
+      line-height: 1.6rem;
+      font-weight: bold;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      background-color: $color-btn;
+      padding: 0.5rem 3rem;
+    }
+  }
+
+  &__title-section{
+    margin-top: 3.1rem;
+    padding: 0;
+    position: relative;
+  }
+
+  &__save-list-section{
+    padding: 0;
+
+    &__planet-container{
+      padding: 0 1rem;
+    }
+
+    &__planet{
+      border-radius: 18px;
+      border: 1px solid #999999;
+      padding: 0.5rem 1rem;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 16px;
+      line-height: 19px;
+      color: $color-text;
+      margin-top: 1rem;
+      display: flex;
+      flex-flow: row nowrap;
+      align-items: center;
+      justify-content: space-between;
+    }
+  }
+
+  &__planet-section{
+    margin-top: 1.7rem;
+    padding: 0;
+    position: relative;
+
+    &__input-section {
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-start;
+      align-items: center;
+      border-bottom: 1px solid $color-divider;
+      background-color: white;
+
+      &--focus{
+        background-color: $color-input;
+      }
+    }
+  }
+
+  &__info-container{
+    margin-top: 2px;
+    padding: 0.8rem;
+    border: 1px solid $color-error;
+
+    &__error-message{
+      color: $color-error;
+      font-size: 1.2rem;
+      line-height: 1.4rem;
+    }
+  }
+
+  &__info-section{
+    padding: 0;
+    z-index: 2;
+    background-color: white;
+    box-shadow: 0 4px 4px $color-label-shadow;
+    position: absolute;
+    top: 5rem;
+  }
+
+  &__btn-section{
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 0;
+    margin-top: 3.1rem;
+    margin-bottom: 3.2rem;
+  }
+
+  &__planet-list{
+    margin-top: 2px;
+    padding: 0.8rem;
+    max-height: 10rem;
+    overflow: scroll;
+
+    @include screen-sm{
+      max-height: 15rem;
+    }
+
+    &__item{
+      margin-left: 0.5rem;
+      font-size: 1.6rem;
+      line-height: 1.9rem;
+      color: $color-label;
+      margin-bottom: 1rem;
+    }
+  }
+}
