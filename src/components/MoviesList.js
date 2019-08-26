@@ -10,11 +10,12 @@ class MoviesList extends Component {
   };
 
   render () {
+    const filmsArray = [...this.props.films, ...this.props.customFilms];
     return (
         <ul className={'list'}>
-          {this.props.films.map((singleMovie, index) => {
+          {filmsArray.map((singleMovie, index) => {
             return (
-              <li className={'list__item'} key={singleMovie.episode_id}>
+              <li className={'list__item'} key={singleMovie.title}>
                 <MoviesListItem title={singleMovie.title} planets={singleMovie.planetsDetail} index={index} onPress={(index) => this.onClick(index)}/>
               </li>
             )
@@ -25,6 +26,7 @@ class MoviesList extends Component {
 }
 MoviesList.propTypes = {
   films: PropTypes.array,
+  customFilms: PropTypes.array,
   onFetchPlanet: PropTypes.func,
 };
 
