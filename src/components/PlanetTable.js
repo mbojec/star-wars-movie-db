@@ -9,32 +9,41 @@ class PlanetsTable extends Component{
     planets: [],
     sortedByHighest: false
   };
-
-  compareByHighest(key) {
+  sor(key){
     return function (a, b) {
-      if (a[key] < b[key]) return 1;
-      if (a[key] > b[key]) return -1;
-      return 0;
-    };
+      if(key === 'name' || key === 'climate'){
+        if (a[key] > b[key]) {
+          return 1;
+        }
+        if (b[key] > a[key]) {
+          return -1;
+        }
+        return 0;
+      } else {
+        return (a[key] === 'unknown'? -1:a[key]) - (b[key] === 'unknown'? -1:b[key])
+      }
+    }
   }
-
-  compareByLowest(key) {
+  sor2(key){
     return function (a, b) {
-      if (a[key] < b[key]) return -1;
-      if (a[key] > b[key]) return 1;
-      return 0;
-    };
+      if(key === 'name' || key === 'climate'){
+        if (a[key] > b[key]) {
+          return -1;
+        }
+        if (b[key] > a[key]) {
+          return 1;
+        }
+        return 0;
+      } else {
+        return (b[key] === 'unknown'? 0:b[key]) - (a[key] === 'unknown'? 0:a[key])
+      }
+    }
   }
 
   sortBy(key) {
     let arrayCopy = [...this.props.planets];
-    if(this.state.sortedByHighest){
-      arrayCopy.sort(this.compareByLowest(key));
-      this.setState({planets: arrayCopy, sortedByHighest: false});
-    } else {
-      arrayCopy.sort(this.compareByHighest(key));
-      this.setState({planets: arrayCopy, sortedByHighest: true});
-    }
+    this.state.sortedByHighest? arrayCopy.sort(this.sor(key)): arrayCopy.sort(this.sor2(key));
+    this.setState({planets: arrayCopy, sortedByHighest: !this.state.sortedByHighest});
   }
 
   render() {
