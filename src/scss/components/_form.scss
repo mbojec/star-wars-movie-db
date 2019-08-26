@@ -45,6 +45,10 @@
       }
 
     }
+
+    &--focus{
+      background-color: $color-input;
+    }
   }
 
   &__submit-btn{
@@ -67,6 +71,7 @@
     margin-top: 3.1rem;
     padding: 0;
     position: relative;
+    background-color: white;
   }
 
   &__save-list-section{
@@ -132,6 +137,10 @@
     position: absolute;
     top: 5rem;
   }
+  &__info-section--hide{
+    display: none;
+  }
+
 
   &__btn-section{
     display: flex;
@@ -147,7 +156,26 @@
     margin-top: 2px;
     padding: 0.8rem;
     max-height: 10rem;
-    overflow: scroll;
+    overflow-y: scroll;
+
+    &::-webkit-scrollbar {
+      background: transparent;
+      color: transparent;
+      width: 0.5rem;
+    }
+
+    &::-webkit-scrollbar-thumb{
+      background: $color-background;
+      color: $color-background;
+      border-radius: 5px;
+      padding: 0 1.6rem;
+      width: 0.5rem;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: white;
+      color: white;
+    }
 
     @include screen-sm{
       max-height: 15rem;

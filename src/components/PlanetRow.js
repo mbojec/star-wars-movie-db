@@ -20,7 +20,7 @@ class PlanetRow extends Component{
 }
 
 PlanetRow.propTypes = {
-  planet: PropTypes.objectOf(JSON)
+  planet: PropTypes.object
 };
 
 
