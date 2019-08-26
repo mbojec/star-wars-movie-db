@@ -1,6 +1,21 @@
 .table {
   width: 100%;
 
+  &__header-container{
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: flex-end;
+
+    &--planet{
+      justify-content: flex-start;
+    }
+
+    p{
+      margin-bottom: 0.3rem;
+    }
+  }
+
   &__planet-name{
     color: $color-primary;
     text-align: left;
@@ -15,6 +30,34 @@
     &__icon{
       display: inline-block;
       margin-left: 0.5rem;
+
+      $self: &;
+
+      &__selected--lowest{
+        #{ $self }__sort-icon{
+          &--lowest{
+            fill: $color-primary;
+          }
+        }
+      }
+
+      &__selected--highest{
+        #{ $self }__sort-icon{
+          &--highest{
+            fill: $color-primary;
+          }
+        }
+      }
+
+      &__sort-icon{
+        &--lowest{
+          fill: $color-text;
+        }
+        &--highest{
+          fill: $color-text;
+        }
+      }
+
     }
   }
 

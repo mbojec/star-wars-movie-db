@@ -7,7 +7,8 @@ class PlanetsTable extends Component{
 
   state = {
     planets: [],
-    sortedByHighest: false
+    sortedByHighest: false,
+    sortedCategory:''
   };
   sor(key){
     return function (a, b) {
@@ -43,22 +44,25 @@ class PlanetsTable extends Component{
   sortBy(key) {
     let arrayCopy = [...this.props.planets];
     this.state.sortedByHighest? arrayCopy.sort(this.sor(key)): arrayCopy.sort(this.sor2(key));
-    this.setState({planets: arrayCopy, sortedByHighest: !this.state.sortedByHighest});
+    this.setState({planets: arrayCopy, sortedByHighest: !this.state.sortedByHighest, sortedCategory: key});
   }
 
   render() {
+
+    console.log(this.state.sortedCategory);
+
     return(
       <div className={'table'}>
         <table>
           <thead>
           <tr>
-            <th className={'table__planet-name'}><p className={'table__header__label'}>Planet name</p><span className={'table__header__icon'} onClick={() => this.sortBy('name')}><Sort/></span></th>
-            <th className={'table__header'}><p className={'table__header__label'}>Rotation period</p><span className={'table__header__icon'} onClick={() => this.sortBy('rotation_period')}><Sort/></span></th>
-            <th className={'table__header'}><p className={'table__header__label'}>Orbital period</p><span className={'table__header__icon'} onClick={() => this.sortBy('orbital_period')}><Sort/></span></th>
-            <th className={'table__header'}><p className={'table__header__label'}>Diameter</p><span className={'table__header__icon'} onClick={() => this.sortBy('diameter')}><Sort/></span></th>
-            <th className={'table__header'}><p className={'table__header__label'}>Climate</p><span className={'table__header__icon'} onClick={() => this.sortBy('climate')}><Sort/></span></th>
-            <th className={'table__header'}><p className={'table__header__label'}>Surface water</p><span className={'table__header__icon'} onClick={() => this.sortBy('surface_water')}><Sort/></span></th>
-            <th className={'table__header'}><p className={'table__header__label'}>Population</p><span className={'table__header__icon'} onClick={() => this.sortBy('population')}><Sort/></span></th>
+            <th className={'table__planet-name'}><div className={'table__header-container--planet'}><p className={'table__header__label'}>Planet name</p><span className={`table__header__icon ${this.state.sortedCategory==='name' && (this.state.sortedByHighest? 'table__header__icon__selected--highest':'table__header__icon__selected--lowest')}`} onClick={() => this.sortBy('name')}><Sort/></span></div></th>
+            <th className={'table__header'}><div className={'table__header-container'}><p className={'table__header__label'}>Rotation period</p><span className={`table__header__icon ${this.state.sortedCategory==='rotation_period' && (this.state.sortedByHighest? 'table__header__icon__selected--highest':'table__header__icon__selected--lowest')}`} onClick={() => this.sortBy('rotation_period')}><Sort/></span></div></th>
+            <th className={'table__header'}><div className={'table__header-container'}><p className={'table__header__label'}>Orbital period</p><span className={`table__header__icon ${this.state.sortedCategory==='orbital_period' && (this.state.sortedByHighest? 'table__header__icon__selected--highest':'table__header__icon__selected--lowest')}`} onClick={() => this.sortBy('orbital_period')}><Sort/></span></div></th>
+            <th className={'table__header'}><div className={'table__header-container'}><p className={'table__header__label'}>Diameter</p><span className={`table__header__icon ${this.state.sortedCategory==='diameter' && (this.state.sortedByHighest? 'table__header__icon__selected--highest':'table__header__icon__selected--lowest')}`} onClick={() => this.sortBy('diameter')}><Sort/></span></div></th>
+            <th className={'table__header'}><div className={'table__header-container'}><p className={'table__header__label'}>Climate</p><span className={`table__header__icon ${this.state.sortedCategory==='climate' && (this.state.sortedByHighest? 'table__header__icon__selected--highest':'table__header__icon__selected--lowest')}`} onClick={() => this.sortBy('climate')}><Sort/></span></div></th>
+            <th className={'table__header'}><div className={'table__header-container'}><p className={'table__header__label'}>Surface water</p><span className={`table__header__icon ${this.state.sortedCategory==='surface_water' && (this.state.sortedByHighest? 'table__header__icon__selected--highest':'table__header__icon__selected--lowest')}`} onClick={() => this.sortBy('surface_water')}><Sort/></span></div></th>
+            <th className={'table__header'}><div className={'table__header-container'}><p className={'table__header__label'}>Population</p><span className={`table__header__icon ${this.state.sortedCategory==='population' && (this.state.sortedByHighest? 'table__header__icon__selected--highest':'table__header__icon__selected--lowest')}`} onClick={() => this.sortBy('population')}><Sort/></span></div></th>
           </tr>
           </thead>
           <tbody>
