@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {Search, Delete} from '../assets/svg'
 import {withRedux} from "../redux/wrapper";
 import PropTypes from 'prop-types';
+import {FormTitleField} from "./FormTitleField";
 
 class Form extends Component{
 
@@ -11,7 +12,6 @@ class Form extends Component{
     validTitleLength: true,
     validTitleUpperCase: true,
     searchHasFocus: false,
-    titleHasFocus: false
   };
 
   handleSubmit(event){
@@ -22,6 +22,13 @@ class Form extends Component{
   handleChange(e) {
     this.setState({[e.target.name]: e.target.value});
     if (e.target.name === 'planetQuery'){
+      this.props.onFetchPlanetsQuery(this.state.planetQuery);
+    }
+  }
+
+  handleChange2(key, value) {
+    this.setState({[key]: value});
+    if (key === 'planetQuery'){
       this.props.onFetchPlanetsQuery(this.state.planetQuery);
     }
   }
@@ -76,20 +83,6 @@ class Form extends Component{
     }), 100);
   }
 
-  handleTitleFocus(){
-    this.setState({ titleHasFocus: !this.state.titleHasFocus})
-  }
-
-  setErrorMessage(){
-    if(!this.state.validTitleLength && !this.state.validTitleUpperCase){
-      return 'Movie title name must start with a capital letter and be at least 3 letter long'
-    } else if(!this.state.validTitleLength && this.state.validTitleUpperCase){
-      return 'Movie title name must be at least 3 letter long'
-    } else {
-      return 'Movie title name must start with a capital letter'
-    }
-  }
-
   render() {
     return(
       <>
@@ -97,13 +90,12 @@ class Form extends Component{
           <div className={'col-12'}>
             <form onSubmit={event => this.handleSubmit(event)}>
               <div className={'row'}>
-                <div className={`col-12 form__title-section`}>
-                  <label className={'form__label'}>Movie title</label>
-                  <input autoComplete="off" onBlur={() => {this.handleTitleValidation(); this.handleTitleFocus()}} onFocus={() => this.handleTitleFocus()} name={'title'} className={`form__input ${this.state.titleHasFocus && 'form__input--focus'}`} type={'text'} placeholder={'Please enter the title of the movie'} value={this.state.title} onChange={e => this.handleChange(e)}/>
-                  <div className={'col-12 form__info-section'}>
-                    {this.state.validTitleLength && this.state.validTitleUpperCase? null :<div className={'form__info-container'}><p className={'form__info-container__error-message'}>{this.setErrorMessage()}</p></div> }
-                  </div>
-                </div>
+                <FormTitleField
+                  onHandleChange={(key, value) => this.handleChange2(key, value)}
+                  onTitleValidation={() => this.handleTitleValidation()}
+                  titleValue={this.state.title}
+                  validTitleLength={this.state.validTitleLength}
+                  validTitleUpperCase={this.state.validTitleUpperCase}/>
                 <div className={'col-12 form__save-list-section'}>
                   {this.props.savedQueryPlanets.length > 0 && <div className={'row'}>{this.props.savedQueryPlanets.map((singlePlanet) => <div key={singlePlanet.name} className={'col-6 col-sm-4 col-md-3  form__save-list-section__planet-container'}><div className={'form__save-list-section__planet'}><p>{singlePlanet.name}</p><span onClick={() => this.deletePlanet(singlePlanet)}><Delete/></span></div></div>)}</div>}
                 </div>
