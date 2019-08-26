@@ -69,6 +69,22 @@
     position: relative;
   }
 
+  &__save-list-section{
+    padding: 0;
+
+    &__planet{
+      border-radius: 18px;
+      border: 1px solid #999999;
+      padding: 0.5rem 1rem;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 16px;
+      line-height: 19px;
+      color: $color-text;
+      margin-top: 1rem;
+    }
+  }
+
   &__planet-section{
     margin-top: 1.7rem;
     padding: 0;

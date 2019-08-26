@@ -1,9 +1,10 @@
-import {FETCH_FILMS_SUCCESS, FETCHING_FILMS, PLANET_FETCHED, PLANET_QUERY_FETCHED} from "./actions";
+import {FETCH_FILMS_SUCCESS, FETCHING_FILMS, PLANET_FETCHED, PLANET_QUERY_FETCHED, SAVE_QUERY_PLANET} from "./actions";
 
 const initialState = {
   films: [],
   isLoading: true,
-  queryPlanets: []
+  queryPlanets: [],
+  savedQueryPlanets: []
 };
 
 const reducer = (state = initialState, action) => {
@@ -39,6 +40,15 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         queryPlanets: [...action.queryPlanets]
+      };
+    }
+    case SAVE_QUERY_PLANET:{
+      let savedCopy = [...state.savedQueryPlanets];
+      savedCopy.push(action.savedQueryPlanet);
+      return {
+        ...state,
+        queryPlanets: [],
+        savedQueryPlanets: savedCopy
       };
     }
     default:

@@ -49,6 +49,16 @@ class Form extends Component{
     console.log('movie saved');
   }
 
+  savePlanet(planet){
+    console.log('palnet saved');
+    console.log(planet);
+    this.props.onSaveQueryPlanet(planet);
+    this.setState({
+      planetQuery: '',
+      searchHasFocus: !this.state.searchHasFocus
+    });
+  }
+
   handleSearchFocus(){
     this.setState({
       searchHasFocus: !this.state.searchHasFocus
@@ -66,8 +76,6 @@ class Form extends Component{
   }
 
   render() {
-    console.log(this.props.queryPlanets.length);
-
     return(
       <>
         <div className={'row form-container'}>
@@ -81,6 +89,9 @@ class Form extends Component{
                     {this.state.validTitleLength && this.state.validTitleUpperCase? null :<div className={'form__info-container'}><p className={'form__info-container__error-message'}>{this.setErrorMessage()}</p></div> }
                   </div>
                 </div>
+                <div className={'col-12 form__save-list-section'}>
+                  {this.props.savedQueryPlanets.length > 0 && <div className={'row'}>{this.props.savedQueryPlanets.map((singlePlanet) => <div key={singlePlanet.name} className={'col-6 col-sm-4 col-md-3 form__save-list-section__planet'}><p>{singlePlanet.name}</p></div>)}</div>}
+                </div>
                 <div className={'col-12 form__planet-section'}>
                   <label className={'form__label'}>Add planet</label>
                   <div className={`form__planet-section__input-section ${this.state.searchHasFocus && 'form__planet-section__input-section--focus'}`}>
@@ -88,7 +99,7 @@ class Form extends Component{
                     <Search/>
                   </div>
                   <div className={'col-12 form__info-section'}>
-                    {this.props.queryPlanets.length > 0 && this.state.searchHasFocus && <ul className={'form__planet-list'}>{this.props.queryPlanets.map((singlePlanet)=> <li key={singlePlanet.name} className={'form__planet-list__item'}>{singlePlanet.name}</li>)}</ul>}
+                    {this.props.queryPlanets.length > 0 && <ul className={'form__planet-list'}>{this.props.queryPlanets.map((singlePlanet)=> <li onClick={() => this.savePlanet(singlePlanet)} key={singlePlanet.name} className={'form__planet-list__item'}>{singlePlanet.name}</li>)}</ul>}
                   </div>
                 </div>
               </div>
@@ -107,7 +118,9 @@ class Form extends Component{
 
 Form.propTypes = {
   queryPlanets: PropTypes.array,
+  savedQueryPlanets: PropTypes.array,
   onFetchPlanetsQuery: PropTypes.func,
+  onSaveQueryPlanet: PropTypes.func,
 };
 
 const connectedComponent = withRedux(Form);

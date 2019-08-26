@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import {fetchFilms, fetchPlanets, searchPlanets} from "./actions";
+import {fetchFilms, fetchPlanets, searchPlanets, saveQueryPlanet} from "./actions";
 
 export function withRedux(WrappedComponent) {
   class withReduxComponent extends Component {
@@ -13,14 +13,16 @@ export function withRedux(WrappedComponent) {
     return {
       onFetch: () => dispatch(fetchFilms()),
       onFetchPlanet: (planets, index) => dispatch(fetchPlanets(planets, index)),
-      onFetchPlanetsQuery: (query) => dispatch(searchPlanets(query))
+      onFetchPlanetsQuery: (query) => dispatch(searchPlanets(query)),
+      onSaveQueryPlanet: (savedPlanet) => dispatch(saveQueryPlanet(savedPlanet))
     }
   };
 
   const mapStateToProps = state => {
     return {
       films: state.films,
-      queryPlanets: state.queryPlanets
+      queryPlanets: state.queryPlanets,
+      savedQueryPlanets: state.savedQueryPlanets
     }
   };
 

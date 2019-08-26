@@ -36,6 +36,7 @@
       transition-timing-function: cubic-bezier(0.895, 0.03, 0.685, 0.22);
       transition-duration: 0.5s;
       transition-property: max-height;
+      overflow: unset;
     }
 
     #{ $self }__content{
@@ -105,6 +106,7 @@
   }
 
   &__inner--form{
+    overflow: hidden;
     max-height: 0;
     transition-duration: 0.5s;
     transition-property: max-height;
