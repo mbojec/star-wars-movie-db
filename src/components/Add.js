@@ -23,7 +23,7 @@ class Add extends Component{
             </p>
             <div className={'list-item__icon'} onClick={() => this.onCollapse()}><ArrowOpen/></div>
           </div>
-          <div className={'list-item__inner'}>
+          <div className={'list-item__inner--form'}>
             <div className={'list-item__content form'}>
               <Form/>
             </div>

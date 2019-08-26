@@ -38,6 +38,7 @@
       font-size: 1.6rem;
       line-height: 1.9rem;
       padding-bottom: 0.7rem;
+      background-color: transparent;
 
       &::placeholder{
         color: $color-hint;
@@ -71,6 +72,7 @@
   &__planet-section{
     margin-top: 1.7rem;
     padding: 0;
+    position: relative;
 
     &__input-section {
       display: flex;
@@ -78,6 +80,11 @@
       justify-content: flex-start;
       align-items: center;
       border-bottom: 1px solid $color-divider;
+      background-color: white;
+
+      &--focus{
+        background-color: $color-input;
+      }
     }
   }
 
@@ -95,11 +102,11 @@
 
   &__info-section{
     padding: 0;
-    position: absolute;
-    bottom: -33px;
     z-index: 2;
     background-color: white;
     box-shadow: 0 4px 4px $color-label-shadow;
+    position: absolute;
+    top: 5rem;
   }
 
   &__btn-section{
@@ -110,5 +117,24 @@
     padding: 0;
     margin-top: 3.1rem;
     margin-bottom: 3.2rem;
+  }
+
+  &__planet-list{
+    margin-top: 2px;
+    padding: 0.8rem;
+    max-height: 10rem;
+    overflow: scroll;
+
+    @include screen-sm{
+      max-height: 15rem;
+    }
+
+    &__item{
+      margin-left: 0.5rem;
+      font-size: 1.6rem;
+      line-height: 1.9rem;
+      color: $color-label;
+      margin-bottom: 1rem;
+    }
   }
 }

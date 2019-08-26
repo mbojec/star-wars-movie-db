@@ -9,7 +9,8 @@ class Form extends Component{
     title: '',
     planetQuery: '',
     validTitleLength: true,
-    validTitleUpperCase: true
+    validTitleUpperCase: true,
+    searchHasFocus: false
   };
 
   handleSubmit(event){
@@ -38,13 +39,20 @@ class Form extends Component{
         title: '',
         planet: '',
         validTitleLength: true,
-        validTitleUpperCase: true
+        validTitleUpperCase: true,
+        searchHasFocus: false
       })
     }
   }
 
   save(){
     console.log('movie saved');
+  }
+
+  handleSearchFocus(){
+    this.setState({
+      searchHasFocus: !this.state.searchHasFocus
+    })
   }
 
   setErrorMessage(){
@@ -61,33 +69,38 @@ class Form extends Component{
     console.log(this.props.queryPlanets.length);
 
     return(
-      <div className={'row form-container'}>
-        <div className={'col-12'}>
-          <form onSubmit={event => this.handleSubmit(event)}>
-            <div className={'row'}>
-              <div className={'col-12 form__title-section'}>
-                <label className={'form__label'}>Movie title</label>
-                <input onBlur={() => this.handleTitleValidation()} name={'title'} className={'form__input'} type={'text'} placeholder={'Please enter the title of the movie'} value={this.state.title} onChange={e => this.handleChange(e)}/>
-                <div className={'col-12 form__info-section'}>
-                  {this.state.validTitleLength && this.state.validTitleUpperCase? null :<div className={'form__info-container'}><p className={'form__info-container__error-message'}>{this.setErrorMessage()}</p></div> }
+      <>
+        <div className={'row form-container'}>
+          <div className={'col-12'}>
+            <form onSubmit={event => this.handleSubmit(event)}>
+              <div className={'row'}>
+                <div className={'col-12 form__title-section'}>
+                  <label className={'form__label'}>Movie title</label>
+                  <input autoComplete="off" onBlur={() => this.handleTitleValidation()} name={'title'} className={'form__input'} type={'text'} placeholder={'Please enter the title of the movie'} value={this.state.title} onChange={e => this.handleChange(e)}/>
+                  <div className={'col-12 form__info-section'}>
+                    {this.state.validTitleLength && this.state.validTitleUpperCase? null :<div className={'form__info-container'}><p className={'form__info-container__error-message'}>{this.setErrorMessage()}</p></div> }
+                  </div>
+                </div>
+                <div className={'col-12 form__planet-section'}>
+                  <label className={'form__label'}>Add planet</label>
+                  <div className={`form__planet-section__input-section ${this.state.searchHasFocus && 'form__planet-section__input-section--focus'}`}>
+                    <input autoComplete="off" onBlur={() => this.handleSearchFocus()} onFocus={() => this.handleSearchFocus()} name={'planetQuery'} className={'form__input--planet'} type={'text'} placeholder={'Search for the planet in the database'} value={this.state.planetQuery} onChange={e => this.handleChange(e)}/>
+                    <Search/>
+                  </div>
+                  <div className={'col-12 form__info-section'}>
+                    {this.props.queryPlanets.length > 0 && this.state.searchHasFocus && <ul className={'form__planet-list'}>{this.props.queryPlanets.map((singlePlanet)=> <li key={singlePlanet.name} className={'form__planet-list__item'}>{singlePlanet.name}</li>)}</ul>}
+                  </div>
                 </div>
               </div>
-              <div className={'col-12 form__planet-section'}>
-                <label className={'form__label'}>Add planet</label>
-                <div className={'form__planet-section__input-section'}>
-                  <input name={'planetQuery'} className={'form__input--planet'} type={'text'} placeholder={'Search for the planet in the database'} value={this.state.planetQuery} onChange={e => this.handleChange(e)}/>
-                  <Search/>
-                </div>
+              <div className={'row form__btn-section'}>
+                  <div className={'col-12 col-sm-3 form__submit-btn'}>
+                    <input type={"submit"} value={'ADD MOVIE'} onClick={event => this.handleSubmit(event)} onSubmit={event => this.handleSubmit(event)}/>
+                  </div>
               </div>
-            </div>
-            <div className={'row form__btn-section'}>
-                <div className={'col-12 col-sm-3 form__submit-btn'}>
-                  <input type={"submit"} value={'ADD MOVIE'} onClick={event => this.handleSubmit(event)} onSubmit={event => this.handleSubmit(event)}/>
-                </div>
-            </div>
-          </form>
+            </form>
+          </div>
         </div>
-      </div>
+      </>
     )
   }
 }

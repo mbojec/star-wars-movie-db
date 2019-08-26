@@ -31,6 +31,13 @@
       transition-property: max-height;
     }
 
+    #{ $self }__inner--form{
+      max-height: 100rem;
+      transition-timing-function: cubic-bezier(0.895, 0.03, 0.685, 0.22);
+      transition-duration: 0.5s;
+      transition-property: max-height;
+    }
+
     #{ $self }__content{
       opacity: 1;
       transform: translateY(0);
@@ -90,6 +97,15 @@
   &__inner{
     max-height: 0;
     overflow: hidden;
+    transition-duration: 0.5s;
+    transition-property: max-height;
+    z-index: 1;
+    position: relative;
+    box-shadow: 0 2px 1px $color-card-closed-shadow;
+  }
+
+  &__inner--form{
+    max-height: 0;
     transition-duration: 0.5s;
     transition-property: max-height;
     z-index: 1;
