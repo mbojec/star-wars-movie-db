@@ -45,6 +45,10 @@
       }
 
     }
+
+    &--focus{
+      background-color: $color-input;
+    }
   }
 
   &__submit-btn{
@@ -67,6 +71,11 @@
     margin-top: 3.1rem;
     padding: 0;
     position: relative;
+    background-color: white;
+
+    //&--focus{
+    //  background-color: $color-input;
+    //}
   }
 
   &__save-list-section{
@@ -132,6 +141,10 @@
     position: absolute;
     top: 5rem;
   }
+  &__info-section--hide{
+    display: none;
+  }
+
 
   &__btn-section{
     display: flex;

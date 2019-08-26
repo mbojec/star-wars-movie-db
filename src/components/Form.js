@@ -10,7 +10,8 @@ class Form extends Component{
     planetQuery: '',
     validTitleLength: true,
     validTitleUpperCase: true,
-    searchHasFocus: false
+    searchHasFocus: false,
+    titleHasFocus: false
   };
 
   handleSubmit(event){
@@ -21,18 +22,22 @@ class Form extends Component{
   handleChange(e) {
     this.setState({[e.target.name]: e.target.value});
     if (e.target.name === 'planetQuery'){
-      this.props.onFetchPlanetsQuery(this.state.planetQuery)
+      this.props.onFetchPlanetsQuery(this.state.planetQuery);
     }
   }
 
   handleTitleValidation(){
-    const titleLengthValidation = this.state.title.length >= 3;
-    const titleUpperCaseValidation = /[A-Z]/.test( this.state.title[0]);
-    this.setState({validTitleLength: titleLengthValidation, validTitleUpperCase: titleUpperCaseValidation})
+    if(this.state.title.length > 0){
+      const titleLengthValidation = this.state.title.length >= 3;
+      const titleUpperCaseValidation = /[A-Z]/.test( this.state.title[0]);
+      this.setState({validTitleLength: titleLengthValidation, validTitleUpperCase: titleUpperCaseValidation})
+    } else {
+      this.setState({validTitleLength: true})
+    }
   }
 
   validateForm(){
-    const titleLengthValidation = this.state.validTitleLength;
+    const titleLengthValidation = this.state.validTitleLength && this.state.title.length >=3;
     const titleUpperCaseValidation = this.state.validTitleUpperCase;
     if(titleLengthValidation && titleUpperCaseValidation){
       this.save();
@@ -58,7 +63,6 @@ class Form extends Component{
     this.props.onSaveQueryPlanet(planet);
     this.setState({
       planetQuery: '',
-      searchHasFocus: !this.state.searchHasFocus
     });
   }
 
@@ -67,9 +71,13 @@ class Form extends Component{
   }
 
   handleSearchFocus(){
-    this.setState({
+    setTimeout(() => this.setState({
       searchHasFocus: !this.state.searchHasFocus
-    })
+    }), 100);
+  }
+
+  handleTitleFocus(){
+    this.setState({ titleHasFocus: !this.state.titleHasFocus})
   }
 
   setErrorMessage(){
@@ -89,9 +97,9 @@ class Form extends Component{
           <div className={'col-12'}>
             <form onSubmit={event => this.handleSubmit(event)}>
               <div className={'row'}>
-                <div className={'col-12 form__title-section'}>
+                <div className={`col-12 form__title-section`}>
                   <label className={'form__label'}>Movie title</label>
-                  <input autoComplete="off" onBlur={() => this.handleTitleValidation()} name={'title'} className={'form__input'} type={'text'} placeholder={'Please enter the title of the movie'} value={this.state.title} onChange={e => this.handleChange(e)}/>
+                  <input autoComplete="off" onBlur={() => {this.handleTitleValidation(); this.handleTitleFocus()}} onFocus={() => this.handleTitleFocus()} name={'title'} className={`form__input ${this.state.titleHasFocus && 'form__input--focus'}`} type={'text'} placeholder={'Please enter the title of the movie'} value={this.state.title} onChange={e => this.handleChange(e)}/>
                   <div className={'col-12 form__info-section'}>
                     {this.state.validTitleLength && this.state.validTitleUpperCase? null :<div className={'form__info-container'}><p className={'form__info-container__error-message'}>{this.setErrorMessage()}</p></div> }
                   </div>
@@ -105,8 +113,8 @@ class Form extends Component{
                     <input autoComplete="off" onBlur={() => this.handleSearchFocus()} onFocus={() => this.handleSearchFocus()} name={'planetQuery'} className={'form__input--planet'} type={'text'} placeholder={'Search for the planet in the database'} value={this.state.planetQuery} onChange={e => this.handleChange(e)}/>
                     <Search/>
                   </div>
-                  <div className={'col-12 form__info-section'}>
-                    {this.props.queryPlanets.length > 0 && <ul className={'form__planet-list'}>{this.props.queryPlanets.map((singlePlanet)=> <li onClick={() => this.savePlanet(singlePlanet)} key={singlePlanet.name} className={'form__planet-list__item'}>{singlePlanet.name}</li>)}</ul>}
+                  <div className={`col-12 form__info-section`}>
+                    {this.props.queryPlanets.length > 0 && this.state.searchHasFocus && <ul className={'form__planet-list'}>{this.props.queryPlanets.map((singlePlanet)=> <li onClick={() => this.savePlanet(singlePlanet)} key={singlePlanet.name} className={'form__planet-list__item'}>{singlePlanet.name}</li>)}</ul>}
                   </div>
                 </div>
               </div>
