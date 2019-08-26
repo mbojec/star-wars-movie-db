@@ -65,19 +65,41 @@
   &__title-section{
     margin-top: 3.1rem;
     padding: 0;
+    position: relative;
   }
 
   &__planet-section{
     margin-top: 1.7rem;
     padding: 0;
 
-    &__input-section{
+    &__input-section {
       display: flex;
       flex-direction: row;
       justify-content: flex-start;
       align-items: center;
       border-bottom: 1px solid $color-divider;
     }
+  }
+
+  &__info-container{
+    margin-top: 2px;
+    padding: 0.8rem;
+    border: 1px solid $color-error;
+
+    &__error-message{
+      color: $color-error;
+      font-size: 1.2rem;
+      line-height: 1.4rem;
+    }
+  }
+
+  &__info-section{
+    padding: 0;
+    position: absolute;
+    bottom: -33px;
+    z-index: 2;
+    background-color: white;
+    box-shadow: 0 4px 4px $color-label-shadow;
   }
 
   &__btn-section{
