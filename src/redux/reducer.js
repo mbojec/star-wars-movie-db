@@ -1,4 +1,4 @@
-import {FETCH_FILMS_SUCCESS, FETCHING_FILMS, PLANET_FETCHED, PLANET_QUERY_FETCHED, SAVE_QUERY_PLANET} from "./actions";
+import {FETCH_FILMS_SUCCESS, FETCHING_FILMS, PLANET_FETCHED, PLANET_QUERY_FETCHED, SAVE_QUERY_PLANET, DELETE_QUERY_PLANET} from "./actions";
 
 const initialState = {
   films: [],
@@ -45,6 +45,14 @@ const reducer = (state = initialState, action) => {
     case SAVE_QUERY_PLANET:{
       let savedCopy = [...state.savedQueryPlanets];
       savedCopy.push(action.savedQueryPlanet);
+      return {
+        ...state,
+        queryPlanets: [],
+        savedQueryPlanets: savedCopy
+      };
+    }
+    case DELETE_QUERY_PLANET:{
+      let savedCopy = state.savedQueryPlanets.filter(planet => planet.name !== action.deletedQueryPlanet.name);
       return {
         ...state,
         queryPlanets: [],

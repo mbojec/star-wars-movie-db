@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import {fetchFilms, fetchPlanets, searchPlanets, saveQueryPlanet} from "./actions";
+import {fetchFilms, fetchPlanets, searchPlanets, saveQueryPlanet, deleteQueryPlanet} from "./actions";
 
 export function withRedux(WrappedComponent) {
   class withReduxComponent extends Component {
@@ -14,7 +14,8 @@ export function withRedux(WrappedComponent) {
       onFetch: () => dispatch(fetchFilms()),
       onFetchPlanet: (planets, index) => dispatch(fetchPlanets(planets, index)),
       onFetchPlanetsQuery: (query) => dispatch(searchPlanets(query)),
-      onSaveQueryPlanet: (savedPlanet) => dispatch(saveQueryPlanet(savedPlanet))
+      onSaveQueryPlanet: (savedPlanet) => dispatch(saveQueryPlanet(savedPlanet)),
+      onDeleteQueryPlanet: (deletedPlanet) => dispatch(deleteQueryPlanet(deletedPlanet))
     }
   };
 

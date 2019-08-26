@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Search} from '../assets/svg'
+import {Search, Delete} from '../assets/svg'
 import {withRedux} from "../redux/wrapper";
 import PropTypes from 'prop-types';
 
@@ -50,13 +50,15 @@ class Form extends Component{
   }
 
   savePlanet(planet){
-    console.log('palnet saved');
-    console.log(planet);
     this.props.onSaveQueryPlanet(planet);
     this.setState({
       planetQuery: '',
       searchHasFocus: !this.state.searchHasFocus
     });
+  }
+
+  deletePlanet(planet){
+    this.props.onDeleteQueryPlanet(planet);
   }
 
   handleSearchFocus(){
@@ -90,7 +92,7 @@ class Form extends Component{
                   </div>
                 </div>
                 <div className={'col-12 form__save-list-section'}>
-                  {this.props.savedQueryPlanets.length > 0 && <div className={'row'}>{this.props.savedQueryPlanets.map((singlePlanet) => <div key={singlePlanet.name} className={'col-6 col-sm-4 col-md-3 form__save-list-section__planet'}><p>{singlePlanet.name}</p></div>)}</div>}
+                  {this.props.savedQueryPlanets.length > 0 && <div className={'row'}>{this.props.savedQueryPlanets.map((singlePlanet) => <div key={singlePlanet.name} className={'col-6 col-sm-4 col-md-3  form__save-list-section__planet-container'}><div className={'form__save-list-section__planet'}><p>{singlePlanet.name}</p><span onClick={() => this.deletePlanet(singlePlanet)}><Delete/></span></div></div>)}</div>}
                 </div>
                 <div className={'col-12 form__planet-section'}>
                   <label className={'form__label'}>Add planet</label>
@@ -121,6 +123,7 @@ Form.propTypes = {
   savedQueryPlanets: PropTypes.array,
   onFetchPlanetsQuery: PropTypes.func,
   onSaveQueryPlanet: PropTypes.func,
+  onDeleteQueryPlanet: PropTypes.func,
 };
 
 const connectedComponent = withRedux(Form);

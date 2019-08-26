@@ -3,6 +3,7 @@ export const FETCHING_FILMS = 'FETCHING_FILMS';
 export const PLANET_FETCHED = 'PLANET_FETCHED';
 export const PLANET_QUERY_FETCHED = 'PLANET_QUERY_FETCHED';
 export const SAVE_QUERY_PLANET = 'SAVE_QUERY_PLANET';
+export const DELETE_QUERY_PLANET = 'DELETE_QUERY_PLANET';
 
 import axios from 'axios';
 
@@ -28,6 +29,11 @@ const planetQueryFetched = (queryPlanets) => ({
 export const saveQueryPlanet = (savedQueryPlanet) => ({
   type: SAVE_QUERY_PLANET,
   savedQueryPlanet
+});
+
+export const deleteQueryPlanet = (deletedQueryPlanet) => ({
+  type: DELETE_QUERY_PLANET,
+  deletedQueryPlanet
 });
 
 function handleError(error) {
