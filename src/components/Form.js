@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import {Search} from '../assets/svg'
+import {withRedux} from "../redux/wrapper";
+import PropTypes from 'prop-types';
 
 class Form extends Component{
 
   state = {
     title: '',
-    planet: '',
+    planetQuery: '',
     validTitleLength: true,
     validTitleUpperCase: true
   };
@@ -17,6 +19,9 @@ class Form extends Component{
 
   handleChange(e) {
     this.setState({[e.target.name]: e.target.value});
+    if (e.target.name === 'planetQuery'){
+      this.props.onFetchPlanetsQuery(this.state.planetQuery)
+    }
   }
 
   handleTitleValidation(){
@@ -53,6 +58,8 @@ class Form extends Component{
   }
 
   render() {
+    console.log(this.props.queryPlanets.length);
+
     return(
       <div className={'row form-container'}>
         <div className={'col-12'}>
@@ -68,7 +75,7 @@ class Form extends Component{
               <div className={'col-12 form__planet-section'}>
                 <label className={'form__label'}>Add planet</label>
                 <div className={'form__planet-section__input-section'}>
-                  <input name={'planet'} className={'form__input--planet'} type={'text'} placeholder={'Search for the planet in the database'} value={this.state.planet} onChange={e => this.handleChange(e)}/>
+                  <input name={'planetQuery'} className={'form__input--planet'} type={'text'} placeholder={'Search for the planet in the database'} value={this.state.planetQuery} onChange={e => this.handleChange(e)}/>
                   <Search/>
                 </div>
               </div>
@@ -85,4 +92,10 @@ class Form extends Component{
   }
 }
 
-export {Form}
+Form.propTypes = {
+  queryPlanets: PropTypes.array,
+  onFetchPlanetsQuery: PropTypes.func,
+};
+
+const connectedComponent = withRedux(Form);
+export {connectedComponent as Form};

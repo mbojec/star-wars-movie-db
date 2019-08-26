@@ -1,8 +1,9 @@
-import {FETCH_FILMS_SUCCESS, FETCHING_FILMS, PLANET_FETCHED} from "./actions";
+import {FETCH_FILMS_SUCCESS, FETCHING_FILMS, PLANET_FETCHED, PLANET_QUERY_FETCHED} from "./actions";
 
 const initialState = {
   films: [],
   isLoading: true,
+  queryPlanets: []
 };
 
 const reducer = (state = initialState, action) => {
@@ -20,8 +21,9 @@ const reducer = (state = initialState, action) => {
         filmArray.push(newFilm);
       }
       return {
+        ...state,
         films: filmArray,
-        isLoading: false
+        isLoading: false,
       };
     }
 
@@ -31,6 +33,12 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         films: filmsCopy
+      };
+    }
+    case PLANET_QUERY_FETCHED:{
+      return {
+        ...state,
+        queryPlanets: [...action.queryPlanets]
       };
     }
     default:
