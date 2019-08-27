@@ -33,7 +33,7 @@ class FormTitleField extends Component{
 
   render() {
     return(
-      <div className={`col-12 form__title-section`}>
+      <>
         <label className={'form__label'}>Movie title</label>
         <input autoComplete="off" onBlur={() => {this.handleTitleValidation(); this.handleTitleFocus()}}
                onFocus={() => this.handleTitleFocus()} name={'title'}
@@ -49,7 +49,7 @@ class FormTitleField extends Component{
               </p>
             </div> }
         </div>
-      </div>
+      </>
     )
   }
 

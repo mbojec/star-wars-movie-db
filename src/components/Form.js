@@ -1,37 +1,25 @@
 import React, { Component } from 'react';
-import {Search} from '../assets/svg'
 import {withRedux} from "../redux/wrapper";
 import PropTypes from 'prop-types';
 import {FormTitleField} from "./FormTitleField";
 import {FormSavedPlanetsList} from "./FormSavedPlanetsList";
+import {FormPlanetList} from "./FormPlanetList";
+import {FormBtn} from "./FormBtn";
 
 class Form extends Component{
 
   state = {
     title: '',
-    planetQuery: '',
     validTitleLength: true,
     validTitleUpperCase: true,
-    searchHasFocus: false,
   };
 
   handleSubmit(event){
     event.preventDefault();
     this.validateForm()
   }
-
-  handleChange(e) {
-    this.setState({[e.target.name]: e.target.value});
-    if (e.target.name === 'planetQuery'){
-      this.props.onFetchPlanetsQuery(this.state.planetQuery);
-    }
-  }
-
-  handleChange2(key, value) {
+  handleChange(key, value) {
     this.setState({[key]: value});
-    if (key === 'planetQuery'){
-      this.props.onFetchPlanetsQuery(this.state.planetQuery);
-    }
   }
 
   handleTitleValidation(){
@@ -66,19 +54,6 @@ class Form extends Component{
     this.props.onSaveCustomFilm(customFilm);
   }
 
-  savePlanet(planet){
-    this.props.onSaveQueryPlanet(planet);
-    this.setState({
-      planetQuery: '',
-    });
-  }
-
-  handleSearchFocus(){
-    setTimeout(() => this.setState({
-      searchHasFocus: !this.state.searchHasFocus
-    }), 100);
-  }
-
   render() {
     return(
       <>
@@ -86,30 +61,23 @@ class Form extends Component{
           <div className={'col-12'}>
             <form onSubmit={event => this.handleSubmit(event)}>
               <div className={'row'}>
-                <FormTitleField
-                  onHandleChange={(key, value) => this.handleChange2(key, value)}
-                  onTitleValidation={() => this.handleTitleValidation()}
-                  titleValue={this.state.title}
-                  validTitleLength={this.state.validTitleLength}
-                  validTitleUpperCase={this.state.validTitleUpperCase}/>
+                <div className={`col-12 form__title-section`}>
+                  <FormTitleField
+                    onHandleChange={(key, value) => this.handleChange(key, value)}
+                    onTitleValidation={() => this.handleTitleValidation()}
+                    titleValue={this.state.title}
+                    validTitleLength={this.state.validTitleLength}
+                    validTitleUpperCase={this.state.validTitleUpperCase}/>
+                </div>
                 <div className={'col-12 form__save-list-section'}>
                   {this.props.savedQueryPlanets.length > 0 && <FormSavedPlanetsList/>}
                 </div>
                 <div className={'col-12 form__planet-section'}>
-                  <label className={'form__label'}>Add planet</label>
-                  <div className={`form__planet-section__input-section ${this.state.searchHasFocus && 'form__planet-section__input-section--focus'}`}>
-                    <input autoComplete="off" onBlur={() => this.handleSearchFocus()} onFocus={() => this.handleSearchFocus()} name={'planetQuery'} className={'form__input--planet'} type={'text'} placeholder={'Search for the planet in the database'} value={this.state.planetQuery} onChange={e => this.handleChange(e)}/>
-                    <Search/>
-                  </div>
-                  <div className={`col-12 form__info-section`}>
-                    {this.props.queryPlanets.length > 0 && this.state.searchHasFocus && <ul className={'form__planet-list'}>{this.props.queryPlanets.map((singlePlanet)=> <li onClick={() => this.savePlanet(singlePlanet)} key={singlePlanet.name} className={'form__planet-list__item'}>{singlePlanet.name}</li>)}</ul>}
-                  </div>
+                  <FormPlanetList/>
                 </div>
               </div>
               <div className={'row form__btn-section'}>
-                  <div className={'col-12 col-sm-3 form__submit-btn'}>
-                    <input type={"submit"} value={'ADD MOVIE'} onClick={event => this.handleSubmit(event)} onSubmit={event => this.handleSubmit(event)}/>
-                  </div>
+                <FormBtn onHandleSubmit={(event) => this.handleSubmit(event)}/>
               </div>
             </form>
           </div>
@@ -120,10 +88,7 @@ class Form extends Component{
 }
 
 Form.propTypes = {
-  queryPlanets: PropTypes.array,
   savedQueryPlanets: PropTypes.array,
-  onFetchPlanetsQuery: PropTypes.func,
-  onSaveQueryPlanet: PropTypes.func,
   onSaveCustomFilm: PropTypes.func
 };
 
