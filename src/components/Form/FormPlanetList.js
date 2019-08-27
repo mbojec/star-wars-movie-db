@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import {Search} from "../assets/svg";
-import {withRedux} from "../redux/wrapper";
+import {Search} from "../../assets/svg";
+import {withRedux} from "../../redux/wrapper";
 
 class FormPlanetList extends Component{
 

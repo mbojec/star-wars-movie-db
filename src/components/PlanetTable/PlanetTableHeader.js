@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import {Sort} from "../assets/svg";
+import {Sort} from "../../assets/svg";
 
 class PlanetTableHeader extends Component{
 

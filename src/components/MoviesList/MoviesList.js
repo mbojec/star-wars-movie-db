@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {MoviesListItem} from "./MoviesListItem";
 import PropTypes from 'prop-types';
-import {withRedux} from "../redux/wrapper";
+import {withRedux} from "../../redux/wrapper";
 
 class MoviesList extends Component {
 

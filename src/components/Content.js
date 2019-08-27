@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import {Loader} from "../assets/svg";
 import {MoviesList} from "./MoviesList";
-import {Add} from "./Add";
+import {AddForm} from "./Form";
 import {withRedux} from "../redux/wrapper";
 
 class Content extends Component{
@@ -16,7 +16,7 @@ class Content extends Component{
         </section>
         <hr className={'content__divider'}/>
         <section className={'content__section'}>
-          <Add/>
+          <AddForm/>
         </section>
       </div>
     )

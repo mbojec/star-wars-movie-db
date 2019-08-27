@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import {Delete} from "../assets/svg";
-import {withRedux} from "../redux/wrapper";
+import {Delete} from "../../assets/svg";
+import {withRedux} from "../../redux/wrapper";
 
 class FormSavedPlanetsList extends Component{
   deletePlanet(planet){

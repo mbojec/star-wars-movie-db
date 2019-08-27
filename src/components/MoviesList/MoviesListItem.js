@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import {ArrowOpen, LoaderSmall} from "../assets/svg";
+import {ArrowOpen, LoaderSmall} from "../../assets/svg";
 import PropTypes from 'prop-types';
-import {PlanetsTable} from "./index";
+import {PlanetsTable} from "../PlanetTable";
 
 
 class MoviesListItem extends Component {

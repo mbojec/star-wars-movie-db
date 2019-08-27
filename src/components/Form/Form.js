@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import {withRedux} from "../redux/wrapper";
+import {withRedux} from "../../redux/wrapper";
 import PropTypes from 'prop-types';
-import {FormTitleField, FormSavedPlanetsList, FormPlanetList, FormBtn} from "./";
+import {FormTitleField, FormSavedPlanetsList, FormPlanetList, FormBtn} from "./index";
 
 class Form extends Component{
 
