@@ -1,5 +1,11 @@
-@mixin screen-xs {
+@mixin screen-xxs {
   @media (max-width: #{$screen-breakpoint-xs}) {
+    @content;
+  }
+}
+
+@mixin screen-xs {
+  @media (max-width: #{$screen-breakpoint-sm}) {
     @content;
   }
 }
