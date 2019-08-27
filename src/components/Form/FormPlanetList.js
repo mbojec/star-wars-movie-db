@@ -19,7 +19,7 @@ class FormPlanetList extends Component{
 
   handleChange(e) {
     this.setState({planetQuery: e.target.value});
-    this.props.onFetchPlanetsQuery(this.state.planetQuery);
+    this.state.planetQuery.length > 1 && this.props.onFetchPlanetsQuery(this.state.planetQuery);
   }
 
   handleSearchFocus(){

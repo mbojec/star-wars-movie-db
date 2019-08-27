@@ -1,20 +1,19 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from "prop-types";
 
-class FormBtn extends Component{
+const FormBtn = ({onHandleSubmit}) => {
 
-  handleSubmit(event){
-    this.props.onHandleSubmit(event)
+  function handleSubmit(event){
+    onHandleSubmit(event)
   }
 
-  render() {
-    return(
-      <div className={'col-12 col-xs-4 col-md-3 form__submit-btn'}>
-        <input type={"submit"} value={'ADD MOVIE'} onClick={event => this.handleSubmit(event)} onSubmit={event => this.handleSubmit(event)}/>
-      </div>
-    )
-  }
-}
+  return(
+    <div className={'col-12 col-xs-4 col-md-3 form__submit-btn'}>
+      <input type={"submit"} value={'ADD MOVIE'} onClick={event => handleSubmit(event)} onSubmit={event => handleSubmit(event)}/>
+    </div>
+  )
+
+};
 
 FormBtn.propTypes = {
   onHandleSubmit: PropTypes.func

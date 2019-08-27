@@ -1,14 +1,13 @@
-import {FETCH_FILMS_SUCCESS, FETCHING_FILMS, PLANET_FETCHED, PLANET_QUERY_FETCHED, SAVE_QUERY_PLANET, DELETE_QUERY_PLANET, SAVE_CUSTOM_FILM} from "./actions";
+import {PLANET_QUERY_FETCHED, SAVE_QUERY_PLANET,  DELETE_QUERY_PLANET, FETCH_FILMS_SUCCESS, FETCHING_FILMS, PLANET_FETCHED, CLEAR_QUERY_PLANET} from "./actions";
 
 const initialState = {
   films: [],
   isLoading: true,
   queryPlanets: [],
   savedQueryPlanets: [],
-  customFilms: []
 };
 
-const reducer = (state = initialState, action) => {
+const networkReducer = (state = initialState, action) => {
   switch (action.type) {
     case FETCHING_FILMS:
       return {
@@ -60,14 +59,11 @@ const reducer = (state = initialState, action) => {
         savedQueryPlanets: savedCopy
       };
     }
-    case SAVE_CUSTOM_FILM:{
-      let savedCopy = [...state.customFilms];
-      let savedFilm = {...action.customFilm, planetsDetail: [...state.savedQueryPlanets]};
-      savedCopy.push(savedFilm);
+    case CLEAR_QUERY_PLANET:{
       return {
         ...state,
-        savedQueryPlanets: [],
-        customFilms: savedCopy
+        queryPlanets: [],
+        savedQueryPlanets: []
       };
     }
     default:
@@ -75,4 +71,4 @@ const reducer = (state = initialState, action) => {
   }
 };
 
-export {reducer};
+export {networkReducer};
