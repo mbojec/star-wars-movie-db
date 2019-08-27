@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
 import {withRedux} from "../redux/wrapper";
 import PropTypes from 'prop-types';
-import {FormTitleField} from "./FormTitleField";
-import {FormSavedPlanetsList} from "./FormSavedPlanetsList";
-import {FormPlanetList} from "./FormPlanetList";
-import {FormBtn} from "./FormBtn";
+import {FormTitleField, FormSavedPlanetsList, FormPlanetList, FormBtn} from "./";
 
 class Form extends Component{
 
@@ -39,10 +36,8 @@ class Form extends Component{
       this.save();
       this.setState({
         title: '',
-        planet: '',
         validTitleLength: true,
         validTitleUpperCase: true,
-        searchHasFocus: false
       })
     }
   }
