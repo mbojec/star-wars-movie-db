@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import {ArrowOpen} from "../assets/svg";
+import {ArrowOpen} from "../../assets/svg";
 import {Form} from "./Form";
 
-class Add extends Component{
+class AddForm extends Component{
 
   state = {
     opened: false
@@ -35,4 +35,4 @@ class Add extends Component{
 
 }
 
-export {Add}
+export {AddForm}

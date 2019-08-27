@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import {Loader} from "../assets/svg";
-import { connect } from 'react-redux';
 import {MoviesList} from "./MoviesList";
-import {Add} from "./Add";
+import {AddForm} from "./Form";
+import {withRedux} from "../redux/wrapper";
 
 class Content extends Component{
 
@@ -16,8 +16,7 @@ class Content extends Component{
         </section>
         <hr className={'content__divider'}/>
         <section className={'content__section'}>
-          <Add/>
-          {/*<div className={'content__card content__card--closed'}><p className={'content__card__title'}>Add</p><ArrowOpen/></div>*/}
+          <AddForm/>
         </section>
       </div>
     )
@@ -27,11 +26,5 @@ Content.propTypes = {
   films: PropTypes.array,
 };
 
-const mapStateToProps = state => {
-  return {
-    films: state.films
-  }
-};
-
-const connectedComponent = connect(mapStateToProps, null) (Content);
+const connectedComponent = withRedux(Content);
 export {connectedComponent as Content}
