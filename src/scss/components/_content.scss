@@ -26,6 +26,7 @@
 
   &__section{
     @extend %center;
+    align-items: flex-start;
 
     &__loader{
       flex-grow: 1;

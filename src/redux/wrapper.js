@@ -22,10 +22,10 @@ export function withRedux(WrappedComponent) {
 
   const mapStateToProps = state => {
     return {
-      films: state.films,
-      queryPlanets: state.queryPlanets,
-      savedQueryPlanets: state.savedQueryPlanets,
-      customFilms: state.customFilms
+      films: state.network.films,
+      queryPlanets: state.local.queryPlanets,
+      savedQueryPlanets: state.local.savedQueryPlanets,
+      customFilms: state.local.customFilms
     }
   };
 
