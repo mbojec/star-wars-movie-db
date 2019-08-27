@@ -6,7 +6,6 @@ import thunk from "redux-thunk";
 import {networkReducer, localReducer} from "./";
 import { logger } from "redux-logger";
 import { composeWithDevTools } from "redux-devtools-extension";
-import { purgeStoredState } from 'redux-persist'
 
 const middleware = [thunk, logger];
 
@@ -22,10 +21,6 @@ const persistConfig = {
   blacklist: ['network'],
   whitelist: ['local']
 };
-
-export function clearStore() {
-  purgeStoredState(persistConfig)
-}
 
 const pReducer = persistReducer(persistConfig, rootReducer);
 
