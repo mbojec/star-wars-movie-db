@@ -24,3 +24,14 @@
   align-items: stretch;
   justify-content: space-between;
 }
+
+%card{
+  margin-top: 1.6rem;
+  width: 100%;
+  background-color: $color-foreground-light;
+  border-radius: 4px;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: space-between;
+}
