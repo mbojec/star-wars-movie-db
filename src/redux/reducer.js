@@ -62,7 +62,8 @@ const reducer = (state = initialState, action) => {
     }
     case SAVE_CUSTOM_FILM:{
       let savedCopy = [...state.customFilms];
-      savedCopy.push(action.customFilm);
+      let savedFilm = {...action.customFilm, planetsDetail: [...state.savedQueryPlanets]};
+      savedCopy.push(savedFilm);
       return {
         ...state,
         savedQueryPlanets: [],
