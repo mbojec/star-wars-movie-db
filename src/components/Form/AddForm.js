@@ -23,7 +23,7 @@ class AddForm extends Component{
             </p>
             <div className={'card__icon'} onClick={() => this.onCollapse()}><ArrowOpen/></div>
           </div>
-          <div className={'card__inner--form'}>
+          <div className={'card__inner'}>
             <div className={'card__inner__content form'}>
               <Form/>
             </div>

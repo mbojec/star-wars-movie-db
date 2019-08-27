@@ -103,28 +103,4 @@
       @extend %center;
     }
   }
-
-  &__inner--form{
-    overflow: hidden;
-    max-height: 0;
-    transition-duration: 0.5s;
-    transition-property: max-height;
-    z-index: 1;
-    position: relative;
-    box-shadow: 0 2px 1px $color-card-closed-shadow;
-
-    &__content{
-      opacity: 0;
-      transform: translateY(-1rem);
-      transition-timing-function: linear, ease;
-      transition-duration: 0.1s;
-      transition-property: opacity, transform;
-      transition-delay: 0.5s;
-      padding: 0;
-      @include screen-sm {
-        padding: 2rem 1.6rem 2.9rem 1.6rem;
-      }
-      @extend %center;
-    }
-  }
 }
