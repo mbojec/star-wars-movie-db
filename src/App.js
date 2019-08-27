@@ -3,11 +3,13 @@ import PropTypes from 'prop-types';
 import {Copyright} from "./assets/svg";
 import {Header, Content} from "./components";
 import {withRedux} from "./redux/wrapper";
+import {clearStore} from "./redux/store";
 
 class App extends Component{
 
   componentDidMount() {
     this.props.onFetch();
+    clearStore();
   }
 
   render() {

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import {fetchFilms, fetchPlanets, searchPlanets, saveQueryPlanet, deleteQueryPlanet, saveCustomFilm} from "./actions";
+import {fetchFilms, fetchPlanets, searchPlanets, saveQueryPlanet, deleteQueryPlanet, saveCustomFilm, clearQueryPlanets} from "./actions";
 
 export function withRedux(WrappedComponent) {
   class withReduxComponent extends Component {
@@ -16,15 +16,16 @@ export function withRedux(WrappedComponent) {
       onFetchPlanetsQuery: (query) => dispatch(searchPlanets(query)),
       onSaveQueryPlanet: (savedPlanet) => dispatch(saveQueryPlanet(savedPlanet)),
       onDeleteQueryPlanet: (deletedPlanet) => dispatch(deleteQueryPlanet(deletedPlanet)),
-      onSaveCustomFilm: (customFilm) => dispatch(saveCustomFilm(customFilm))
+      onSaveCustomFilm: (customFilm) => dispatch(saveCustomFilm(customFilm)),
+      onClearQueryPlanets: () => dispatch(clearQueryPlanets())
     }
   };
 
   const mapStateToProps = state => {
     return {
       films: state.network.films,
-      queryPlanets: state.local.queryPlanets,
-      savedQueryPlanets: state.local.savedQueryPlanets,
+      queryPlanets: state.network.queryPlanets,
+      savedQueryPlanets: state.network.savedQueryPlanets,
       customFilms: state.local.customFilms
     }
   };

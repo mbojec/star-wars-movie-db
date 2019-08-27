@@ -45,8 +45,10 @@ class Form extends Component{
   save(){
     const customFilm = {
       title: this.state.title,
+      planetsDetail: this.props.savedQueryPlanets
     };
     this.props.onSaveCustomFilm(customFilm);
+    this.props.onClearQueryPlanets();
   }
 
   render() {
@@ -84,7 +86,8 @@ class Form extends Component{
 
 Form.propTypes = {
   savedQueryPlanets: PropTypes.array,
-  onSaveCustomFilm: PropTypes.func
+  onSaveCustomFilm: PropTypes.func,
+  onClearQueryPlanets: PropTypes.func,
 };
 
 const connectedComponent = withRedux(Form);

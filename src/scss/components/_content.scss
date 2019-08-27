@@ -28,6 +28,10 @@
     @extend %center;
     align-items: flex-start;
 
+    &--center{
+      align-items: center;
+    }
+
     &__loader{
       flex-grow: 1;
     }

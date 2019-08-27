@@ -5,6 +5,7 @@ export const PLANET_QUERY_FETCHED = 'PLANET_QUERY_FETCHED';
 export const SAVE_QUERY_PLANET = 'SAVE_QUERY_PLANET';
 export const DELETE_QUERY_PLANET = 'DELETE_QUERY_PLANET';
 export const SAVE_CUSTOM_FILM = 'SAVE_CUSTOM_FILM';
+export const CLEAR_QUERY_PLANET = 'CLEAR_QUERY_PLANET';
 
 import axios from 'axios';
 
@@ -40,6 +41,10 @@ export const deleteQueryPlanet = (deletedQueryPlanet) => ({
 export const saveCustomFilm = (customFilm) => ({
   type: SAVE_CUSTOM_FILM,
   customFilm
+});
+
+export const clearQueryPlanets = () => ({
+  type: CLEAR_QUERY_PLANET
 });
 
 function handleError(error) {
