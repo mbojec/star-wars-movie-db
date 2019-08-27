@@ -142,7 +142,7 @@ module.exports = function (env) {
 
     if(isProd) {
         config.plugins.push( new MiniCSS(
-            { filename: '_main.scss.[chunkhash].css' } )
+            { filename: 'main.scss.[chunkhash].css' } )
         )
     }
 
