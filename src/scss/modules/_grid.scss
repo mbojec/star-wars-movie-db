@@ -12,6 +12,16 @@
 }
 
 @for $i from 1 through 12 {
+  @media(min-width: $screen-breakpoint-xs){
+    .col-xs-#{$i}{
+      padding: 0 15px;
+      width: 100% * ($i / 12);
+    }
+  }
+}
+
+
+@for $i from 1 through 12 {
   @media(min-width: $screen-breakpoint-sm){
     .col-sm-#{$i}{
       padding: 0 15px;

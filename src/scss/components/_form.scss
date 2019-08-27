@@ -12,34 +12,23 @@
 
   &__label{
     display: block;
-    font-size: 12px;
-    line-height: 14px;
-    color: $color-label;
+    @include font-size--small($color-label);
   }
 
   &__input{
-    margin-top: 0.5rem;
-    outline: 0;
-    border: none;
     width: 100%;
-    font-size: 1.6rem;
-    line-height: 1.9rem;
-    padding-bottom: 0.7rem;
+    @extend %form-input;
+    @include font-size--normal($color-label);
     border-bottom: 1px solid $color-divider;
     &::placeholder{
       color: $color-hint;
     }
 
     &--planet{
-      margin-top: 0.5rem;
-      outline: 0;
-      border: none;
       flex-grow: 1;
-      font-size: 1.6rem;
-      line-height: 1.9rem;
-      padding-bottom: 0.7rem;
       background-color: transparent;
-
+      @extend %form-input;
+      @include font-size--normal($color-label);
       &::placeholder{
         color: $color-hint;
       }
@@ -78,7 +67,7 @@
     padding: 0;
 
     &__planet-container{
-      padding: 0 1rem;
+      padding: 0;
     }
 
     &__planet{
@@ -87,9 +76,7 @@
       padding: 0.5rem 1rem;
       font-style: normal;
       font-weight: normal;
-      font-size: 16px;
-      line-height: 19px;
-      color: $color-text;
+      @include font-size--normal($color-text);
       margin-top: 1rem;
       display: flex;
       flex-flow: row nowrap;
@@ -183,9 +170,7 @@
 
     &__item{
       margin-left: 0.5rem;
-      font-size: 1.6rem;
-      line-height: 1.9rem;
-      color: $color-label;
+      @include font-size--normal($color-label);
       margin-bottom: 1rem;
     }
   }

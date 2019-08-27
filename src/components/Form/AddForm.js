@@ -14,17 +14,17 @@ class AddForm extends Component{
 
   render() {
     return(
-      <div className={'list__item'}>
+      <div className={'card-container'}>
         <div
-          className={`list-item ${this.state.opened && 'list-item--opened'}`} >
-          <div className={'list-item__line'}>
-            <p className={'list-item__title'}>
+          className={`card ${this.state.opened && 'card--opened'}`} >
+          <div className={'card__title'}>
+            <p>
               Add
             </p>
-            <div className={'list-item__icon'} onClick={() => this.onCollapse()}><ArrowOpen/></div>
+            <div className={'card__icon'} onClick={() => this.onCollapse()}><ArrowOpen/></div>
           </div>
-          <div className={'list-item__inner--form'}>
-            <div className={'list-item__content form'}>
+          <div className={'card__inner'}>
+            <div className={'card__inner__content form'}>
               <Form/>
             </div>
           </div>

@@ -1,5 +1,11 @@
-@mixin screen-xs {
+@mixin screen-xxs {
   @media (max-width: #{$screen-breakpoint-xs}) {
+    @content;
+  }
+}
+
+@mixin screen-xs {
+  @media (max-width: #{$screen-breakpoint-sm}) {
     @content;
   }
 }
@@ -49,4 +55,15 @@
       }
     }
   }
+}
+
+@mixin font-size--normal($color){
+  font-size: 1.6rem;
+  line-height: 1.9rem;
+  color: $color;
+}
+@mixin font-size--small($color){
+  font-size: 12px;
+  line-height: 14px;
+  color: $color;
 }

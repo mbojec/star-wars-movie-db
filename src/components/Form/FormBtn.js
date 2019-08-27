@@ -9,7 +9,7 @@ class FormBtn extends Component{
 
   render() {
     return(
-      <div className={'col-12 col-sm-3 form__submit-btn'}>
+      <div className={'col-12 col-xs-4 col-md-3 form__submit-btn'}>
         <input type={"submit"} value={'ADD MOVIE'} onClick={event => this.handleSubmit(event)} onSubmit={event => this.handleSubmit(event)}/>
       </div>
     )

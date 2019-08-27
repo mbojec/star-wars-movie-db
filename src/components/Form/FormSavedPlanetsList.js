@@ -12,7 +12,7 @@ class FormSavedPlanetsList extends Component{
     return(
       <div className={'row'}>
         {this.props.savedQueryPlanets.map((singlePlanet) =>
-          <div key={singlePlanet.name} className={'col-6 col-sm-4 col-md-3  form__save-list-section__planet-container'}>
+          <div key={singlePlanet.name} className={'col-6 col-xs-4 col-sm-3  form__save-list-section__planet-container'}>
             <div className={'form__save-list-section__planet'}>
               <p>{singlePlanet.name}</p>
               <span onClick={() => this.deletePlanet(singlePlanet)}><Delete/>
