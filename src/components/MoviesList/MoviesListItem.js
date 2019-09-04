@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {ArrowOpen, LoaderSmall} from "../../assets/svg";
+import {ArrowOpen, Loader} from "../../assets/svg";
 import PropTypes from 'prop-types';
 import {PlanetsTable} from "../PlanetTable";
 
@@ -30,7 +30,7 @@ class MoviesListItem extends Component {
         </div>
         <div className={'card__inner'}>
           <div className={'card__inner__content'}>
-            {this.props.planets.length === 0? <LoaderSmall/>: <PlanetsTable index={this.props.index} planets={this.props.planets}/>}
+            {this.props.planets.length === 0? <span className={'card__inner__content__loader'}><Loader/></span>: <PlanetsTable index={this.props.index} planets={this.props.planets}/>}
           </div>
         </div>
       </div>

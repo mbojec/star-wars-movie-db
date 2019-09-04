@@ -11,8 +11,8 @@ class Content extends Component{
     const filmsArray = [...this.props.films, ...this.props.customFilms];
     return(
       <div className={'content'}>
-        <section className={`content__section content__section__loader ${filmsArray.length === 0 && 'content__section--center'}`}>
-          {filmsArray.length === 0? <Loader/> : <MoviesList/>}
+        <section className={`content__section ${filmsArray.length === 0 && 'content__section--center'}`}>
+          {filmsArray.length === 0? <span className={'content__section__loader'}><Loader/></span> : <MoviesList/>}
         </section>
         <hr className={'content__divider'}/>
         <section className={'content__section'}>

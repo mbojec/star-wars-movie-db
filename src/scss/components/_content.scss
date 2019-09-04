@@ -27,13 +27,15 @@
   &__section{
     @extend %center;
     align-items: flex-start;
+    flex-grow: 1;
 
     &--center{
       align-items: center;
     }
 
     &__loader{
-      flex-grow: 1;
+      width: 5rem;
+      height: 5rem;
     }
   }
 

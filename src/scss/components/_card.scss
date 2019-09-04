@@ -20,6 +20,11 @@
         transition-timing-function: ease-in-out;
         transition-duration: 0.2s;
         transition-property: opacity, transform;
+
+        &__loader{
+          width: 2.5rem;
+          height: 2.5rem;
+        }
       }
 
     }
@@ -101,6 +106,11 @@
         padding: 2rem 1.6rem 2.9rem 1.6rem;
       }
       @extend %center;
+
+      &__loader{
+        width: 2.5rem;
+        height: 2.5rem;
+      }
     }
   }
 }
