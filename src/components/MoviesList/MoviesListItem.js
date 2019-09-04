@@ -22,11 +22,11 @@ class MoviesListItem extends Component {
     return (
       <div
         className={`card ${this.state.opened && 'card--opened'}`} >
-        <div className={'card__title'}>
+        <div className={'card__title'} onClick={() => this.onCollapse()}>
           <p>
             {this.props.title}
           </p>
-          <div className={'card__icon'} onClick={() => this.onCollapse()}><ArrowOpen/></div>
+          <div className={'card__icon'} ><ArrowOpen/></div>
         </div>
         <div className={'card__inner'}>
           <div className={'card__inner__content'}>

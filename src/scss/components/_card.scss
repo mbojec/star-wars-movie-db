@@ -8,32 +8,22 @@
 
   &--opened{
     #{ $self }__inner{
-      max-height: 200rem;
-      transition-timing-function: cubic-bezier(0.895, 0.03, 0.685, 0.22);
-      transition-duration: 0.5s;
-      transition-property: max-height;
+      animation: slide-s-card 0.5s cubic-bezier(0.895, 0.03, 0.685, 0.22) forwards;
 
       &__content{
-        opacity: 1;
-        transform: translateY(0);
-        transition-delay: 0.2s;
-        transition-timing-function: ease-in-out;
-        transition-duration: 0.2s;
-        transition-property: opacity, transform;
+        animation: slide-s-card-content 0.2s 0.2s ease-in-out forwards;
 
         &__loader{
           width: 2.5rem;
           height: 2.5rem;
+          animation: rotate-s-loader 1s linear infinite;
         }
       }
 
     }
 
     #{ $self }__inner--form{
-      max-height: 100rem;
-      transition-timing-function: cubic-bezier(0.895, 0.03, 0.685, 0.22);
-      transition-duration: 0.5s;
-      transition-property: max-height;
+      animation: slide-form-card 0.5s cubic-bezier(0.895, 0.03, 0.685, 0.22) forwards;
       overflow: unset;
     }
 
@@ -47,10 +37,7 @@
 
       &__arrow--background {
         fill: $color-secondary;
-        max-height: 100rem;
-        transition-duration: 0.2s;
-        transition-delay: 0.2s;
-        transition-property: fill;
+        animation: change-arrow-color 0.2s 0.2s forwards;
       }
     }
   }
@@ -68,6 +55,10 @@
     }
     box-shadow: 0 2px 1px $color-card-closed-shadow;
 
+    &:hover{
+      cursor: pointer;
+    }
+
     p{
       font-size: 1.6rem;
       color: $color-primary;
@@ -80,27 +71,19 @@
   &__icon{
     transition: transform 0.3s ease-in-out;
     &__arrow--background{
-      transition-duration: 0.2s;
-      transition-delay: 0.2s;
+      fill: $color-primary;
     }
   }
 
   &__inner{
-    max-height: 0;
     overflow: hidden;
-    transition-duration: 0.5s;
-    transition-property: max-height;
     z-index: 1;
     position: relative;
     box-shadow: 0 2px 1px $color-card-closed-shadow;
+    max-height: 0;
 
     &__content{
-      opacity: 0;
-      transform: translateY(-1rem);
-      transition-timing-function: linear, ease;
-      transition-duration: 0.1s;
-      transition-property: opacity, transform;
-      transition-delay: 0.5s;
+      animation: slide-s-card-content 0.2s 0.2s ease-in-out reverse forwards;
       padding: 0;
       @include screen-sm {
         padding: 2rem 1.6rem 2.9rem 1.6rem;
@@ -110,7 +93,11 @@
       &__loader{
         width: 2.5rem;
         height: 2.5rem;
+        animation: rotate-s-loader 1s linear infinite;
       }
     }
   }
 }
+
+
+

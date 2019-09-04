@@ -14,7 +14,7 @@ const FormSavedPlanetsList = ({savedQueryPlanets, onDeleteQueryPlanet}) => {
         <div key={singlePlanet.name} className={'col-6 col-xs-4 col-sm-3  form__save-list-section__planet-container'}>
           <div className={'form__save-list-section__planet'}>
             <p>{singlePlanet.name}</p>
-            <span onClick={() => deletePlanet(singlePlanet)}><Delete/>
+            <span onClick={() => deletePlanet(singlePlanet)} className={'form__save-list-section__planet__delete-btn'}><Delete/>
               </span>
           </div>
         </div>)}
