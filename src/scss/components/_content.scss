@@ -1,4 +1,6 @@
 .content{
+  $self: &;
+
   flex-grow: 1;
   @extend %stretch;
 
@@ -27,7 +29,15 @@
   &__section{
     @extend %center;
     align-items: flex-start;
-    flex-grow: 1;
+
+    &__main{
+      flex-grow: 1;
+      display: flex;
+      flex-flow: column nowrap;
+      justify-content: flex-end;
+      align-items: center;
+      position: relative;
+    }
 
     &--center{
       align-items: center;
@@ -37,6 +47,25 @@
       width: 5rem;
       height: 5rem;
       animation: rotate-s-loader 1s linear infinite;
+
+      &--main{
+        position: absolute;
+        top: 50%;
+        bottom: 50%;
+      }
+    }
+
+    &__error-message{
+      width: 100%;
+      font-size: 2.4rem;
+      text-align: center;
+      color: $color-error;
+
+      &--main{
+        position: absolute;
+        top: 50%;
+        bottom: 50%;
+      }
     }
   }
 
