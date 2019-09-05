@@ -9,10 +9,23 @@ class Content extends Component{
 
   render() {
     const filmsArray = [...this.props.films, ...this.props.customFilms];
+    let content;
+    if(this.props.isLoadingMovieData && filmsArray.length ===0){
+      content = <span className={'content__section__loader content__section__loader--main'}><Loader/></span>;
+    } else if (filmsArray.length === 0 && !this.props.isLoadingMovieData){
+      content = (
+        <span className={'content__section__error-message content__section__error-message--main'}>
+          <p>An error has occurred while fetching data</p>
+        </span>
+      )
+    } else {
+      content = <MoviesList/>
+    }
+
     return(
       <div className={'content'}>
-        <section className={`content__section content__section__loader ${filmsArray.length === 0 && 'content__section--center'}`}>
-          {filmsArray.length === 0? <Loader/> : <MoviesList/>}
+        <section className={`content__section content__section__main ${filmsArray.length === 0 && 'content__section--center'}`}>
+          {content}
         </section>
         <hr className={'content__divider'}/>
         <section className={'content__section'}>
@@ -25,6 +38,7 @@ class Content extends Component{
 Content.propTypes = {
   films: PropTypes.array,
   customFilms: PropTypes.array,
+  isLoadingMovieData: PropTypes.bool
 };
 
 const connectedComponent = withRedux(Content);

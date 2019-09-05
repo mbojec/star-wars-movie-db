@@ -32,7 +32,7 @@ class Form extends Component{
   validateForm(){
     const titleLengthValidation = this.state.validTitleLength && this.state.title.length >=3;
     const titleUpperCaseValidation = this.state.validTitleUpperCase;
-    if(titleLengthValidation && titleUpperCaseValidation){
+    if(titleLengthValidation && titleUpperCaseValidation && this.props.savedQueryPlanets.length > 0){
       this.save();
       this.setState({
         title: '',

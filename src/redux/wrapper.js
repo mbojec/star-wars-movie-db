@@ -26,7 +26,9 @@ export function withRedux(WrappedComponent) {
       films: state.network.films,
       queryPlanets: state.network.queryPlanets,
       savedQueryPlanets: state.network.savedQueryPlanets,
-      customFilms: state.local.customFilms
+      customFilms: state.local.customFilms,
+      isLoadingMovieData: state.network.isLoadingMovieData,
+      isLoadingPlanetData: state.network.isLoadingPlanetData,
     }
   };
 

@@ -1,10 +1,12 @@
 @import "~normalize.css";
 @import './modules/base';
+@import './modules/fonts';
 @import './modules/colors';
 @import './modules/dimensions';
 @import './modules/extends';
 @import './modules/grid';
 @import './modules/mixins';
+@import './modules/animations';
 @import './components/app';
 @import './components/content';
 @import 'components/list';
