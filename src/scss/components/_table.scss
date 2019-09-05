@@ -30,6 +30,9 @@
     &__icon{
       display: inline-block;
       margin-left: 0.5rem;
+      &:hover{
+        cursor: pointer;
+      }
 
       $self: &;
 

@@ -20,6 +20,17 @@
     @include screen-sm {
       padding-top: 3.2rem;
     }
+
+    &__logo-container{
+      margin-right: 6rem;
+      margin-left: 6rem;
+      width: 100vw;
+      max-width: 316px;
+      min-width: 200px;
+      @include screen-sm {
+        margin: 0;
+      }
+    }
   }
 
   &__main{
@@ -34,6 +45,9 @@
 
   &__footer{
     padding-bottom: 2.7rem;
+    font-size: 12px;
+    line-height: 14px;
+    color: $color-divider;
     @extend %center;
     @include screen-sm {
       padding-bottom: 2.9rem;

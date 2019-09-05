@@ -18,8 +18,9 @@ class FormPlanetList extends Component{
   }
 
   handleChange(e) {
-    this.setState({planetQuery: e.target.value});
-    this.state.planetQuery.length > 1 && this.props.onFetchPlanetsQuery(this.state.planetQuery);
+    this.setState({planetQuery: e.target.value},() =>{
+      this.state.planetQuery.length > 1 ? this.props.onFetchPlanetsQuery(this.state.planetQuery) : this.props.onClearQueryPlanets();
+    });
   }
 
   handleSearchFocus(){
@@ -55,6 +56,7 @@ FormPlanetList.propTypes = {
   queryPlanets: PropTypes.array,
   onFetchPlanetsQuery: PropTypes.func,
   onSaveQueryPlanet: PropTypes.func,
+  onClearQueryPlanets: PropTypes.func
 };
 
 const connectedComponent = withRedux(FormPlanetList);
