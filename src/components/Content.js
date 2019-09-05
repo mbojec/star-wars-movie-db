@@ -10,9 +10,9 @@ class Content extends Component{
   render() {
     const filmsArray = [...this.props.films, ...this.props.customFilms];
     let content;
-    if(this.props.isLoading && filmsArray.length ===0){
+    if(this.props.isLoadingMovieData && filmsArray.length ===0){
       content = <span className={'content__section__loader content__section__loader--main'}><Loader/></span>;
-    } else if (filmsArray.length === 0 && !this.props.isLoading){
+    } else if (filmsArray.length === 0 && !this.props.isLoadingMovieData){
       content = (
         <span className={'content__section__error-message content__section__error-message--main'}>
           <p>An error has occurred while fetching data</p>
@@ -38,7 +38,7 @@ class Content extends Component{
 Content.propTypes = {
   films: PropTypes.array,
   customFilms: PropTypes.array,
-  isLoading: PropTypes.bool
+  isLoadingMovieData: PropTypes.bool
 };
 
 const connectedComponent = withRedux(Content);

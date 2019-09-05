@@ -18,6 +18,13 @@
           height: 2.5rem;
           animation: rotate-s-loader 1s linear infinite;
         }
+
+        &__error-msg{
+          width: 100%;
+          font-size: 1.6rem;
+          text-align: center;
+          color: $color-error;
+        }
       }
 
     }
@@ -94,6 +101,13 @@
         width: 2.5rem;
         height: 2.5rem;
         animation: rotate-s-loader 1s linear infinite;
+      }
+
+      &__error-msg{
+        width: 100%;
+        font-size: 2.4rem;
+        text-align: center;
+        color: $color-error;
       }
     }
   }

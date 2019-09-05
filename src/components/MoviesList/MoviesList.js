@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import {withRedux} from "../../redux/wrapper";
 import {Loader} from "../../assets/svg";
 
-const MoviesList = ({films, customFilms, onFetchPlanet, isLoading}) => {
+const MoviesList = ({films, customFilms, onFetchPlanet, isLoadingMovieData}) => {
 
   function onClick(index){
     onFetchPlanet(films[index].planets, index)
@@ -12,9 +12,9 @@ const MoviesList = ({films, customFilms, onFetchPlanet, isLoading}) => {
 
   const filmsArray = [...films, ...customFilms];
   const content = () => {
-    if(isLoading){
+    if(isLoadingMovieData){
       return <span className={'content__section__loader content__section__loader--main'}><Loader/></span>
-    } else if (films.length === 0 && !isLoading){
+    } else if (films.length === 0 && !isLoadingMovieData){
       return (
         <span className={'content__section__error-message content__section__error-message--main'}>
           <p>An error has occurred while fetching data</p>
@@ -45,7 +45,7 @@ MoviesList.propTypes = {
   films: PropTypes.array,
   customFilms: PropTypes.array,
   onFetchPlanet: PropTypes.func,
-  isLoading: PropTypes.bool
+  isLoadingMovieData: PropTypes.bool
 };
 
 const connectedComponent = withRedux(MoviesList);

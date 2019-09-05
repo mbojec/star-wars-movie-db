@@ -10,12 +10,14 @@ export const FETCH_ERROR = 'FETCH_ERROR';
 
 import axios from 'axios';
 
-const fetchingData = () => ({
-  type: FETCHING_DATA
+const fetchingData = payload => ({
+  type: FETCHING_DATA,
+  payload
 });
 
-const fetchError = () => ({
-  type: FETCH_ERROR
+const fetchError = payload => ({
+  type: FETCH_ERROR,
+  payload
 });
 
 const filmsFetched = films => ({
@@ -66,34 +68,33 @@ const printError = (error)  => {
 };
 
 export const fetchFilms = () => (dispatch) => {
-  dispatch(fetchingData());
+  dispatch(fetchingData({isLoadingMovieData: true}));
   axios.get(`https://swapi.co/api/films/?format=json`, {headers: {"Content-Type": "application/json"}})
     .then(res => dispatch(filmsFetched(res)))
     .catch((error) => {
       printError(error);
-      dispatch(fetchError())
+      dispatch(fetchError({isLoadingMovieData: false}))
     });
 };
 
 export const fetchPlanets = (planets, index) => (dispatch) => {
-  dispatch(fetchingData());
+  dispatch(fetchingData({isLoadingPlanetData: true}));
   for(let planet of planets){
     axios.get(planet, {headers: {"Content-Type": "application/json"}})
       .then(res => dispatch(planetFetched(res, index)))
       .catch((error) => {
         printError(error);
-        dispatch(fetchError())
+        dispatch(fetchError({isLoadingPlanetData: false}))
       });
   }
 };
 
 export const searchPlanets = query => (dispatch) => {
-  dispatch(fetchingData());
-    axios.get(`https://swapi.co/api/plats/?search=${query}`, {headers: {"Content-Type": "application/json"}})
+  dispatch(fetchingData({isLoadingQueryData: true}));
+    axios.get(`https://swapi.co/api/planets/?search=${query}`, {headers: {"Content-Type": "application/json"}})
       .then(res => dispatch(planetQueryFetched(res.data.results)))
       .catch((error) => {
         printError(error);
-        dispatch(fetchError())
       });
 };
 

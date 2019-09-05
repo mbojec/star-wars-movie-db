@@ -2,7 +2,8 @@ import {PLANET_QUERY_FETCHED, SAVE_QUERY_PLANET,  DELETE_QUERY_PLANET, FETCH_FIL
 
 const initialState = {
   films: [],
-  isLoading: true,
+  isLoadingMovieData: true,
+  isLoadingPlanetData: false,
   queryPlanets: [],
   savedQueryPlanets: [],
 };
@@ -12,12 +13,12 @@ const networkReducer = (state = initialState, action) => {
     case FETCHING_DATA:
       return {
         ...state,
-        isLoading: true
+        ...action.payload
       };
     case FETCH_ERROR:
       return {
         ...state,
-        isLoading: false
+        ...action.payload
       };
     case FETCH_FILMS_SUCCESS:{
       const filmArray = [];
@@ -29,7 +30,7 @@ const networkReducer = (state = initialState, action) => {
       return {
         ...state,
         films: filmArray,
-        isLoading: false,
+        isLoadingMovieData: false,
       };
     }
 
@@ -39,13 +40,13 @@ const networkReducer = (state = initialState, action) => {
       return {
         ...state,
         isLoading: false,
-        films: filmsCopy
+        isLoadingPlanetData: filmsCopy
       };
     }
     case PLANET_QUERY_FETCHED:{
       return {
         ...state,
-        isLoading: false,
+        isLoadingQueryData: false,
         queryPlanets: [...action.queryPlanets]
       };
     }
