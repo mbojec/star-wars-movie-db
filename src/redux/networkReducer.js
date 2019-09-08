@@ -1,4 +1,13 @@
-import {PLANET_QUERY_FETCHED, SAVE_QUERY_PLANET,  DELETE_QUERY_PLANET, FETCH_FILMS_SUCCESS, FETCHING_DATA, PLANET_FETCHED, CLEAR_QUERY_PLANET, FETCH_ERROR} from "./actions";
+import {
+  PLANET_QUERY_FETCHED,
+  SAVE_QUERY_PLANET,
+  DELETE_QUERY_PLANET,
+  FETCH_FILMS_SUCCESS,
+  FETCHING_DATA,
+  PLANET_FETCHED,
+  CLEAR_QUERY_PLANET,
+  FETCH_ERROR,
+} from './actions';
 
 const initialState = {
   films: [],
@@ -13,18 +22,18 @@ const networkReducer = (state = initialState, action) => {
     case FETCHING_DATA:
       return {
         ...state,
-        ...action.payload
+        ...action.payload,
       };
     case FETCH_ERROR:
       return {
         ...state,
-        ...action.payload
+        ...action.payload,
       };
-    case FETCH_FILMS_SUCCESS:{
+    case FETCH_FILMS_SUCCESS: {
       const filmArray = [];
       const films = action.films.data.results;
-      for(let film of films){
-        let newFilm = {...film, planetsDetail : []};
+      for (let film of films) {
+        let newFilm = { ...film, planetsDetail: [] };
         filmArray.push(newFilm);
       }
       return {
@@ -34,44 +43,44 @@ const networkReducer = (state = initialState, action) => {
       };
     }
 
-    case PLANET_FETCHED:{
+    case PLANET_FETCHED: {
       let filmsCopy = [...state.films];
       filmsCopy[action.index].planetsDetail.push(action.planets.data);
       return {
         ...state,
         isLoading: false,
-        isLoadingPlanetData: filmsCopy
+        isLoadingPlanetData: filmsCopy,
       };
     }
-    case PLANET_QUERY_FETCHED:{
+    case PLANET_QUERY_FETCHED: {
       return {
         ...state,
         isLoadingQueryData: false,
-        queryPlanets: [...action.queryPlanets]
+        queryPlanets: [...action.queryPlanets],
       };
     }
-    case SAVE_QUERY_PLANET:{
+    case SAVE_QUERY_PLANET: {
       let savedCopy = [...state.savedQueryPlanets];
       savedCopy.push(action.savedQueryPlanet);
       return {
         ...state,
         queryPlanets: [],
-        savedQueryPlanets: savedCopy
+        savedQueryPlanets: savedCopy,
       };
     }
-    case DELETE_QUERY_PLANET:{
+    case DELETE_QUERY_PLANET: {
       let savedCopy = state.savedQueryPlanets.filter(planet => planet.name !== action.deletedQueryPlanet.name);
       return {
         ...state,
         queryPlanets: [],
-        savedQueryPlanets: savedCopy
+        savedQueryPlanets: savedCopy,
       };
     }
-    case CLEAR_QUERY_PLANET:{
+    case CLEAR_QUERY_PLANET: {
       return {
         ...state,
         queryPlanets: [],
-        savedQueryPlanets: []
+        savedQueryPlanets: [],
       };
     }
     default:
@@ -79,4 +88,4 @@ const networkReducer = (state = initialState, action) => {
   }
 };
 
-export {networkReducer};
+export { networkReducer };

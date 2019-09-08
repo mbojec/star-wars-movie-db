@@ -1,58 +1,57 @@
 import React, { Component } from 'react';
-import {withRedux} from "../../redux/wrapper";
+import { withRedux } from '../../redux/wrapper';
 import PropTypes from 'prop-types';
-import {FormTitleField, FormSavedPlanetsList, FormPlanetList, FormBtn} from "./index";
+import { FormTitleField, FormSavedPlanetsList, FormPlanetList, FormBtn } from './index';
 
-class Form extends Component{
-
+class Form extends Component {
   state = {
     title: '',
     validTitleLength: true,
     validTitleUpperCase: true,
   };
 
-  handleSubmit(event){
+  handleSubmit(event) {
     event.preventDefault();
-    this.validateForm()
+    this.validateForm();
   }
   handleChange(key, value) {
-    this.setState({[key]: value});
+    this.setState({ [key]: value });
   }
 
-  handleTitleValidation(){
-    if(this.state.title.length > 0){
+  handleTitleValidation() {
+    if (this.state.title.length > 0) {
       const titleLengthValidation = this.state.title.length >= 3;
-      const titleUpperCaseValidation = /[A-Z]/.test( this.state.title[0]);
-      this.setState({validTitleLength: titleLengthValidation, validTitleUpperCase: titleUpperCaseValidation})
+      const titleUpperCaseValidation = /[A-Z]/.test(this.state.title[0]);
+      this.setState({ validTitleLength: titleLengthValidation, validTitleUpperCase: titleUpperCaseValidation });
     } else {
-      this.setState({validTitleLength: true})
+      this.setState({ validTitleLength: true });
     }
   }
 
-  validateForm(){
-    const titleLengthValidation = this.state.validTitleLength && this.state.title.length >=3;
+  validateForm() {
+    const titleLengthValidation = this.state.validTitleLength && this.state.title.length >= 3;
     const titleUpperCaseValidation = this.state.validTitleUpperCase;
-    if(titleLengthValidation && titleUpperCaseValidation && this.props.savedQueryPlanets.length > 0){
+    if (titleLengthValidation && titleUpperCaseValidation && this.props.savedQueryPlanets.length > 0) {
       this.save();
       this.setState({
         title: '',
         validTitleLength: true,
         validTitleUpperCase: true,
-      })
+      });
     }
   }
 
-  save(){
+  save() {
     const customFilm = {
       title: this.state.title,
-      planetsDetail: this.props.savedQueryPlanets
+      planetsDetail: this.props.savedQueryPlanets,
     };
     this.props.onSaveCustomFilm(customFilm);
     this.props.onClearQueryPlanets();
   }
 
   render() {
-    return(
+    return (
       <>
         <div className={'row form-container'}>
           <div className={'col-12'}>
@@ -64,23 +63,22 @@ class Form extends Component{
                     onTitleValidation={() => this.handleTitleValidation()}
                     titleValue={this.state.title}
                     validTitleLength={this.state.validTitleLength}
-                    validTitleUpperCase={this.state.validTitleUpperCase}/>
+                    validTitleUpperCase={this.state.validTitleUpperCase}
+                  />
                 </div>
-                <div className={'col-12 form__save-list-section'}>
-                  {this.props.savedQueryPlanets.length > 0 && <FormSavedPlanetsList/>}
-                </div>
+                <div className={'col-12 form__save-list-section'}>{this.props.savedQueryPlanets.length > 0 && <FormSavedPlanetsList />}</div>
                 <div className={'col-12 form__planet-section'}>
-                  <FormPlanetList/>
+                  <FormPlanetList />
                 </div>
               </div>
               <div className={'row form__btn-section'}>
-                <FormBtn onHandleSubmit={(event) => this.handleSubmit(event)}/>
+                <FormBtn onHandleSubmit={event => this.handleSubmit(event)} />
               </div>
             </form>
           </div>
         </div>
       </>
-    )
+    );
   }
 }
 
@@ -91,4 +89,4 @@ Form.propTypes = {
 };
 
 const connectedComponent = withRedux(Form);
-export {connectedComponent as Form};
+export { connectedComponent as Form };

@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 
 const Sort = () => (
   <svg className={'table__header__icon__sort-icon'} width={6} height={12} fill="none">
@@ -7,4 +7,4 @@ const Sort = () => (
   </svg>
 );
 
-export {Sort}
+export { Sort };

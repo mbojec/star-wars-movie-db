@@ -39,4 +39,5 @@ node_modules/
 
 ### Other ###
 .test/
+src/build/*
 

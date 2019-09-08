@@ -1,25 +1,38 @@
 html {
   box-sizing: border-box;
-  font-family: 'Barlow', 'Arial', 'sans-serif';;
+  font-family: 'Barlow', 'Arial', 'sans-serif';
   font-size: 62.5%;
 }
 
-*, *:before, *:after {
+*,
+*:before,
+*:after {
   box-sizing: inherit;
 }
 
-body, h1, h2, h3, h4, h5, h6, p, ol, ul {
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ol,
+ul {
   margin: 0;
   padding: 0;
   font-weight: normal;
 }
 
-td, th{
+td,
+th {
   color: #474747;
   text-align: right;
 }
 
-ol, ul {
+ol,
+ul {
   list-style: none;
 }
 
@@ -28,6 +41,6 @@ img {
   height: auto;
 }
 
-input:focus{
+input:focus {
   outline: none;
 }

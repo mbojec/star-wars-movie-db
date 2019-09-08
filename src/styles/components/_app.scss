@@ -1,4 +1,4 @@
-.app{
+.app {
   margin-top: 1.6rem;
   margin-bottom: 1.6rem;
   background-color: $color-background;
@@ -14,14 +14,14 @@
     padding: 0 3rem;
   }
 
-  &__header{
+  &__header {
     padding-top: 3.5rem;
     @extend %center;
     @include screen-sm {
       padding-top: 3.2rem;
     }
 
-    &__logo-container{
+    &__logo-container {
       margin-right: 6rem;
       margin-left: 6rem;
       width: 100vw;
@@ -33,7 +33,7 @@
     }
   }
 
-  &__main{
+  &__main {
     flex-grow: 1;
     margin-top: 1.6rem;
     margin-bottom: 2.2rem;
@@ -43,7 +43,7 @@
     }
   }
 
-  &__footer{
+  &__footer {
     padding-bottom: 2.7rem;
     font-size: 12px;
     line-height: 14px;

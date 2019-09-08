@@ -1,10 +1,10 @@
-.content{
+.content {
   $self: &;
 
   flex-grow: 1;
   @extend %stretch;
 
-  &__card{
+  &__card {
     width: 100%;
     background-color: $color-foreground-light;
     border-radius: 4px;
@@ -17,7 +17,7 @@
       padding: 1.4rem 1.5rem;
     }
 
-    &__title{
+    &__title {
       font-size: 1.6rem;
       color: $color-primary;
       font-style: normal;
@@ -26,11 +26,11 @@
     }
   }
 
-  &__section{
+  &__section {
     @extend %center;
     align-items: flex-start;
 
-    &__main{
+    &__main {
       flex-grow: 1;
       display: flex;
       flex-flow: column nowrap;
@@ -39,29 +39,29 @@
       position: relative;
     }
 
-    &--center{
+    &--center {
       align-items: center;
     }
 
-    &__loader{
+    &__loader {
       width: 5rem;
       height: 5rem;
       animation: rotate-s-loader 1s linear infinite;
 
-      &--main{
+      &--main {
         position: absolute;
         top: 50%;
         bottom: 50%;
       }
     }
 
-    &__error-message{
+    &__error-message {
       width: 100%;
       font-size: 2.4rem;
       text-align: center;
       color: $color-error;
 
-      &--main{
+      &--main {
         position: absolute;
         top: 50%;
         bottom: 50%;
@@ -69,7 +69,7 @@
     }
   }
 
-  &__divider{
+  &__divider {
     margin: 3.2rem -2rem;
     height: 1px;
     border: 0;
@@ -79,6 +79,3 @@
     }
   }
 }
-
-
-
