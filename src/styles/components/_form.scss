@@ -19,6 +19,7 @@
     width: 100%;
     @extend %form-input;
     @include font-size--normal($color-label);
+
     border-bottom: 1px solid $color-divider;
     &::placeholder {
       color: $color-hint;
@@ -75,11 +76,12 @@
 
     &__planet {
       border-radius: 18px;
-      border: 1px solid #999999;
+      border: 1px solid #999;
       padding: 0.5rem 1rem;
       font-style: normal;
       font-weight: normal;
       @include font-size--normal($color-text);
+
       margin-top: 1rem;
       display: flex;
       flex-flow: row nowrap;
@@ -179,6 +181,7 @@
     &__item {
       margin-left: 0.5rem;
       @include font-size--normal($color-label);
+
       margin-bottom: 1rem;
       width: 100%;
       &:hover {
