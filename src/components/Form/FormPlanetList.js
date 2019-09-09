@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Search } from '../../assets/svg';
 import { withRedux } from '../../redux/wrapper';
+import classNames from 'classnames';
 
 class FormPlanetList extends Component {
   state = {
@@ -33,10 +34,15 @@ class FormPlanetList extends Component {
   }
 
   render() {
+    const formInputCLass = classNames({
+      'form__planet-section__input-section': true,
+      'form__planet-section__input-section--focus': this.state.searchHasFocus,
+    });
+
     return (
       <>
         <label className={'form__label'}>Add planet</label>
-        <div className={`form__planet-section__input-section ${this.state.searchHasFocus && 'form__planet-section__input-section--focus'}`}>
+        <div className={formInputCLass}>
           <input
             autoComplete="off"
             onBlur={() => this.handleSearchFocus()}

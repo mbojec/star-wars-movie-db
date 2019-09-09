@@ -4,10 +4,18 @@ import { Loader } from '../assets/svg';
 import { MoviesList } from './MoviesList';
 import { AddForm } from './Form';
 import { withRedux } from '../redux/wrapper';
+import classNames from 'classnames';
 
 class Content extends Component {
   render() {
     const filmsArray = [...this.props.films, ...this.props.customFilms];
+
+    const mainSectionClass = classNames({
+      content__section: true,
+      content__section__main: true,
+      'content__section--center': filmsArray.length === 0,
+    });
+
     let content;
     if (this.props.isLoadingMovieData && filmsArray.length === 0) {
       content = (
@@ -27,7 +35,7 @@ class Content extends Component {
 
     return (
       <div className={'content'}>
-        <section className={`content__section content__section__main ${filmsArray.length === 0 && 'content__section--center'}`}>{content}</section>
+        <section className={mainSectionClass}>{content}</section>
         <hr className={'content__divider'} />
         <section className={'content__section'}>
           <AddForm />

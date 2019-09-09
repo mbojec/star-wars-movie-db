@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 
 class FormTitleField extends Component {
   state = {
@@ -31,6 +32,11 @@ class FormTitleField extends Component {
   }
 
   render() {
+    const formInputCLass = classNames({
+      form__input: true,
+      'form__input--focus': this.state.titleHasFocus,
+    });
+
     return (
       <>
         <label className={'form__label'}>Movie title</label>
@@ -42,7 +48,7 @@ class FormTitleField extends Component {
           }}
           onFocus={() => this.handleTitleFocus()}
           name={'title'}
-          className={`form__input ${this.state.titleHasFocus && 'form__input--focus'}`}
+          className={formInputCLass}
           type={'text'}
           placeholder={'Please enter the title of the movie'}
           value={this.props.titleValue}

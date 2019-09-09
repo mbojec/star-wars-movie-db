@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { ArrowOpen } from '../../assets/svg';
 import { Form } from './Form';
+import classNames from 'classnames';
 
 class AddForm extends Component {
   state = {
@@ -12,9 +13,14 @@ class AddForm extends Component {
   }
 
   render() {
+    const cardClass = classNames({
+      card: true,
+      'card--opened': this.state.opened,
+    });
+
     return (
       <div className={'card-container'}>
-        <div className={`card ${this.state.opened && 'card--opened'}`}>
+        <div className={cardClass}>
           <div className={'card__title'}>
             <p>Add</p>
             <div className={'card__icon'} onClick={() => this.onCollapse()}>
