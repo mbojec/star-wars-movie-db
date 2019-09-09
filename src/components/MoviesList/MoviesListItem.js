@@ -3,6 +3,7 @@ import { ArrowOpen, Loader } from '../../assets/svg';
 import PropTypes from 'prop-types';
 import { PlanetsTable } from '../PlanetTable';
 import { withRedux } from '../../redux/wrapper';
+import classNames from 'classnames';
 
 class MoviesListItem extends Component {
   state = {
@@ -18,6 +19,11 @@ class MoviesListItem extends Component {
   }
 
   render() {
+    const cardClass = classNames({
+      card: true,
+      'card--opened': this.state.opened,
+    });
+
     let content;
     if (this.props.isLoadingPlanetData && this.props.planets.length === 0) {
       content = (
@@ -36,7 +42,7 @@ class MoviesListItem extends Component {
     }
 
     return (
-      <div className={`card ${this.state.opened && 'card--opened'}`}>
+      <div className={cardClass}>
         <div className={'card__title'} onClick={() => this.onCollapse()}>
           <p>{this.props.title}</p>
           <div className={'card__icon'}>
