@@ -1,61 +1,56 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import { ArrowOpen, Loader } from '../../assets/svg';
 import PropTypes from 'prop-types';
 import { PlanetsTable } from '../PlanetTable';
 import { withRedux } from '../../redux/wrapper';
 import classNames from 'classnames';
 
-class MoviesListItem extends Component {
-  state = {
-    opened: false,
-  };
+const MoviesListItem = ({ title, planets, index, onPress, isLoadingPlanetData }) => {
+  const [opened, setOpened] = useState(false);
 
-  onCollapse() {
-    const { index, planets } = this.props;
-    this.setState({ opened: !this.state.opened });
+  function onCollapse() {
+    setOpened(!opened);
     if (planets.length === 0) {
-      this.props.onPress(index);
+      onPress(index);
     }
   }
 
-  render() {
-    const cardClass = classNames({
-      card: true,
-      'card--opened': this.state.opened,
-    });
+  const cardClass = classNames({
+    card: true,
+    'card--opened': opened,
+  });
 
-    let content;
-    if (this.props.isLoadingPlanetData && this.props.planets.length === 0) {
-      content = (
-        <span className={'card__inner__content__loader'}>
-          <Loader />
-        </span>
-      );
-    } else if (this.props.planets.length === 0 && !this.props.isLoadingPlanetData) {
-      content = (
-        <span className={'card__inner__content__error-msg'}>
-          <p>An error has occurred while fetching data</p>
-        </span>
-      );
-    } else {
-      content = <PlanetsTable index={this.props.index} planets={this.props.planets} />;
-    }
+  let content;
+  if (isLoadingPlanetData && planets.length === 0) {
+    content = (
+      <span className={'card__inner__content__loader'}>
+        <Loader />
+      </span>
+    );
+  } else if (planets.length === 0 && !isLoadingPlanetData) {
+    content = (
+      <span className={'card__inner__content__error-msg'}>
+        <p>An error has occurred while fetching data</p>
+      </span>
+    );
+  } else {
+    content = <PlanetsTable index={index} planets={planets} />;
+  }
 
-    return (
-      <div className={cardClass}>
-        <div className={'card__title'} onClick={() => this.onCollapse()}>
-          <p>{this.props.title}</p>
-          <div className={'card__icon'}>
-            <ArrowOpen />
-          </div>
-        </div>
-        <div className={'card__inner'}>
-          <div className={'card__inner__content'}>{content}</div>
+  return (
+    <div className={cardClass}>
+      <div className={'card__title'} onClick={() => onCollapse()}>
+        <p>{title}</p>
+        <div className={'card__icon'}>
+          <ArrowOpen />
         </div>
       </div>
-    );
-  }
-}
+      <div className={'card__inner'}>
+        <div className={'card__inner__content'}>{content}</div>
+      </div>
+    </div>
+  );
+};
 
 MoviesListItem.propTypes = {
   title: PropTypes.string,

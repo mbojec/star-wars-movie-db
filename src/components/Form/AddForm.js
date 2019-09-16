@@ -1,41 +1,37 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import { ArrowOpen } from '../../assets/svg';
 import { Form } from './Form';
 import classNames from 'classnames';
 
-class AddForm extends Component {
-  state = {
-    opened: false,
-  };
+const AddForm = () => {
+  const [opened, setOpened] = useState(false);
 
-  onCollapse() {
-    this.setState({ opened: !this.state.opened });
+  function onCollapse() {
+    setOpened(!opened);
   }
 
-  render() {
-    const cardClass = classNames({
-      card: true,
-      'card--opened': this.state.opened,
-    });
+  const cardClass = classNames({
+    card: true,
+    'card--opened': opened,
+  });
 
-    return (
-      <div className={'card-container'}>
-        <div className={cardClass}>
-          <div className={'card__title'}>
-            <p>Add</p>
-            <div className={'card__icon'} onClick={() => this.onCollapse()}>
-              <ArrowOpen />
-            </div>
+  return (
+    <div className={'card-container'}>
+      <div className={cardClass}>
+        <div className={'card__title'}>
+          <p>Add</p>
+          <div className={'card__icon'} onClick={() => onCollapse()}>
+            <ArrowOpen />
           </div>
-          <div className={'card__inner'}>
-            <div className={'card__inner__content form'}>
-              <Form />
-            </div>
+        </div>
+        <div className={'card__inner'}>
+          <div className={'card__inner__content form'}>
+            <Form />
           </div>
         </div>
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
 
 export { AddForm };
