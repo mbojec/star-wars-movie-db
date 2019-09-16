@@ -48,8 +48,8 @@ const networkReducer = (state = initialState, action) => {
       filmsCopy[action.index].planetsDetail.push(action.planets.data);
       return {
         ...state,
-        isLoading: false,
-        isLoadingPlanetData: filmsCopy,
+        films: filmsCopy,
+        isLoadingPlanetData: false,
       };
     }
     case PLANET_QUERY_FETCHED: {
@@ -80,7 +80,6 @@ const networkReducer = (state = initialState, action) => {
       return {
         ...state,
         queryPlanets: [],
-        savedQueryPlanets: [],
       };
     }
     default:
