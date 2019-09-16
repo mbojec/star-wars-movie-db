@@ -1,45 +1,43 @@
-.card-container{
+.card-container {
   @extend %card;
 }
 
-.card{
+.card {
   width: 100%;
   $self: &;
 
-  &--opened{
-    #{ $self }__inner{
+  &--opened {
+    #{ $self }__inner {
       animation: slide-s-card 0.5s cubic-bezier(0.895, 0.03, 0.685, 0.22) forwards;
 
-      &__content{
+      &__content {
         animation: slide-s-card-content 0.2s 0.2s ease-in-out forwards;
 
-        &__loader{
+        &__loader {
           width: 2.5rem;
           height: 2.5rem;
           animation: rotate-s-loader 1s linear infinite;
         }
 
-        &__error-msg{
+        &__error-msg {
           width: 100%;
           font-size: 1.6rem;
           text-align: center;
           color: $color-error;
         }
       }
-
     }
 
-    #{ $self }__inner--form{
+    #{ $self }__inner--form {
       animation: slide-form-card 0.5s cubic-bezier(0.895, 0.03, 0.685, 0.22) forwards;
       overflow: unset;
     }
 
-
-    #{ $self }__title{
+    #{ $self }__title {
       box-shadow: 0 4px 12px $color-card-opened-shadow;
     }
 
-    #{ $self }__icon{
+    #{ $self }__icon {
       transform: rotate(180deg);
 
       &__arrow--background {
@@ -49,7 +47,7 @@
     }
   }
 
-  &__title{
+  &__title {
     width: 100%;
     border-radius: 4px;
     display: flex;
@@ -60,13 +58,14 @@
     @include screen-sm {
       padding: 1.4rem 1.5rem;
     }
+
     box-shadow: 0 2px 1px $color-card-closed-shadow;
 
-    &:hover{
+    &:hover {
       cursor: pointer;
     }
 
-    p{
+    p {
       font-size: 1.6rem;
       color: $color-primary;
       font-style: normal;
@@ -75,21 +74,21 @@
     }
   }
 
-  &__icon{
+  &__icon {
     transition: transform 0.3s ease-in-out;
-    &__arrow--background{
+    &__arrow--background {
       fill: $color-primary;
     }
   }
 
-  &__inner{
+  &__inner {
     overflow: hidden;
     z-index: 1;
     position: relative;
     box-shadow: 0 2px 1px $color-card-closed-shadow;
     max-height: 0;
 
-    &__content{
+    &__content {
       animation: slide-s-card-content 0.2s 0.2s ease-in-out reverse forwards;
       padding: 0;
       @include screen-sm {
@@ -97,13 +96,13 @@
       }
       @extend %center;
 
-      &__loader{
+      &__loader {
         width: 2.5rem;
         height: 2.5rem;
         animation: rotate-s-loader 1s linear infinite;
       }
 
-      &__error-msg{
+      &__error-msg {
         width: 100%;
         font-size: 2.4rem;
         text-align: center;
@@ -112,6 +111,3 @@
     }
   }
 }
-
-
-

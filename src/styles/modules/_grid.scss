@@ -8,22 +8,11 @@
     padding: 0 15px;
     width: 100% * ($i / 12);
   }
-
 }
 
 @for $i from 1 through 12 {
-  @media(min-width: $screen-breakpoint-xs){
-    .col-xs-#{$i}{
-      padding: 0 15px;
-      width: 100% * ($i / 12);
-    }
-  }
-}
-
-
-@for $i from 1 through 12 {
-  @media(min-width: $screen-breakpoint-sm){
-    .col-sm-#{$i}{
+  @media (min-width: $screen-breakpoint-xs) {
+    .col-xs-#{$i} {
       padding: 0 15px;
       width: 100% * ($i / 12);
     }
@@ -31,8 +20,8 @@
 }
 
 @for $i from 1 through 12 {
-  @media(min-width: $screen-breakpoint-md){
-    .col-md-#{$i}{
+  @media (min-width: $screen-breakpoint-sm) {
+    .col-sm-#{$i} {
       padding: 0 15px;
       width: 100% * ($i / 12);
     }
@@ -40,8 +29,8 @@
 }
 
 @for $i from 1 through 12 {
-  @media(min-width: $screen-breakpoint-lg){
-    .col-lg-#{$i}{
+  @media (min-width: $screen-breakpoint-md) {
+    .col-md-#{$i} {
       padding: 0 15px;
       width: 100% * ($i / 12);
     }
@@ -49,8 +38,17 @@
 }
 
 @for $i from 1 through 12 {
-  @media(min-width: $screen-breakpoint-xl){
-    .col-xl-#{$i}{
+  @media (min-width: $screen-breakpoint-lg) {
+    .col-lg-#{$i} {
+      padding: 0 15px;
+      width: 100% * ($i / 12);
+    }
+  }
+}
+
+@for $i from 1 through 12 {
+  @media (min-width: $screen-breakpoint-xl) {
+    .col-xl-#{$i} {
       padding: 0 15px;
       width: 100% * ($i / 12);
     }

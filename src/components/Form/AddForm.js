@@ -1,38 +1,37 @@
-import React, { Component } from 'react';
-import {ArrowOpen} from "../../assets/svg";
-import {Form} from "./Form";
+import React, { useState } from 'react';
+import { ArrowOpen } from '../../assets/svg';
+import { Form } from './Form';
+import classNames from 'classnames';
 
-class AddForm extends Component{
+const AddForm = () => {
+  const [opened, setOpened] = useState(false);
 
-  state = {
-    opened: false
-  };
-
-  onCollapse(){
-    this.setState({opened: !this.state.opened});
+  function onCollapse() {
+    setOpened(!opened);
   }
 
-  render() {
-    return(
-      <div className={'card-container'}>
-        <div
-          className={`card ${this.state.opened && 'card--opened'}`} >
-          <div className={'card__title'}>
-            <p>
-              Add
-            </p>
-            <div className={'card__icon'} onClick={() => this.onCollapse()}><ArrowOpen/></div>
+  const cardClass = classNames({
+    card: true,
+    'card--opened': opened,
+  });
+
+  return (
+    <div className={'card-container'}>
+      <div className={cardClass}>
+        <div className={'card__title'} onClick={() => onCollapse()}>
+          <p>Add</p>
+          <div className={'card__icon'}>
+            <ArrowOpen />
           </div>
-          <div className={'card__inner'}>
-            <div className={'card__inner__content form'}>
-              <Form/>
-            </div>
+        </div>
+        <div className={'card__inner'}>
+          <div className={'card__inner__content form'}>
+            <Form />
           </div>
         </div>
       </div>
-    )
-  }
+    </div>
+  );
+};
 
-}
-
-export {AddForm}
+export { AddForm };

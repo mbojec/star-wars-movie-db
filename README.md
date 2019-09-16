@@ -9,13 +9,13 @@ The data about the created custom movies should be store locally with redux pers
 ## Project structure
 
 ### Home
-<div align="center"><img src="https://github.com/mbojec/star-wars-movie-db/blob/master/Screenshots/Desktop.png?raw=true" width="100%"/></div>
+<div align="center"><img src="https://github.com/mbojec/star-wars-movie-db/blob/master/screenshots/Desktop.png?raw=true" width="100%"/></div>
 
 ### Search
-<div align="center"><img src="https://github.com/mbojec/star-wars-movie-db/blob/master/Screenshots/Desktop_Search.png?raw=true" width="100%"/></div>
+<div align="center"><img src="https://github.com/mbojec/star-wars-movie-db/blob/master/screenshots/Desktop_Search.png?raw=true" width="100%"/></div>
 
 ### Error
-<div align="center"><img src="https://github.com/mbojec/star-wars-movie-db/blob/master/Screenshots/Desktop_Error.png?raw=true" width="100%"/></div>
+<div align="center"><img src="https://github.com/mbojec/star-wars-movie-db/blob/master/screenshots/Desktop_Error.png?raw=true" width="100%"/></div>
 
 ## Building project
 

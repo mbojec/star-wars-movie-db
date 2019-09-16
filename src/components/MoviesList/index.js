@@ -1,2 +1,2 @@
-export {MoviesList} from './MoviesList'
-export {MoviesListItem} from './MoviesListItem'
+export { MoviesList } from './MoviesList';
+export { MoviesListItem } from './MoviesListItem';

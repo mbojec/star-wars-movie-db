@@ -1,2 +1,2 @@
-export {localReducer} from './localReducer'
-export {networkReducer} from './networkReducer'
+export { localReducer } from './localReducer';
+export { networkReducer } from './networkReducer';

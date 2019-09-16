@@ -1,24 +1,39 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {Sort} from "../../assets/svg";
+import { Sort } from '../../assets/svg';
+import classNames from 'classnames';
 
-const PlanetTableHeader = ({label, keyValue, onPress, sortedByHighest, sortedCategory}) => {
-
+const PlanetTableHeader = ({ label, keyValue, onPress, sortedByHighest, sortedCategory }) => {
   function handleClick() {
     onPress(keyValue);
   }
-  return(
-    <th className={`${keyValue === 'name'? 'table__planet-name' : 'table__header'}`}>
-      <div className={`${keyValue === 'name'? 'table__header-container--planet' : 'table__header-container'}`}>
+
+  const headerContainerClass = classNames({
+    'table__header-container': true,
+    'table__header-container--planet': keyValue === 'name',
+  });
+
+  const headerClass = classNames({
+    'table__planet-name': keyValue === 'name',
+    table__header: !(keyValue === 'name'),
+  });
+
+  const headerIconClass = classNames({
+    table__header__icon: true,
+    'table__header__icon__selected--highest': sortedCategory === keyValue && sortedByHighest,
+    'table__header__icon__selected--lowest': sortedCategory === keyValue && !sortedByHighest,
+  });
+
+  return (
+    <th className={headerClass}>
+      <div className={headerContainerClass}>
         <p className={'table__header__label'}>{label}</p>
-        <span className={`table__header__icon 
-          ${sortedCategory===keyValue &&
-        (sortedByHighest? 'table__header__icon__selected--highest':'table__header__icon__selected--lowest')}`}
-              onClick={() => handleClick()}><Sort/>
-          </span>
+        <span className={headerIconClass} onClick={() => handleClick()}>
+          <Sort />
+        </span>
       </div>
     </th>
-  )
+  );
 };
 
 PlanetTableHeader.propTypes = {
@@ -26,8 +41,7 @@ PlanetTableHeader.propTypes = {
   keyValue: PropTypes.string,
   onPress: PropTypes.func,
   sortedByHighest: PropTypes.bool,
-  sortedCategory: PropTypes.string
+  sortedCategory: PropTypes.string,
 };
 
-export {PlanetTableHeader}
-
+export { PlanetTableHeader };

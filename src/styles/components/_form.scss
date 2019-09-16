@@ -1,49 +1,49 @@
-.form-container{
+.form-container {
   width: 100%;
   height: 100%;
 
-  @include screen-sm{
+  @include screen-sm {
     padding: 0 calc(100% * (1 / 10));
   }
 }
 
-.form{
+.form {
   padding: 0;
 
-  &__label{
+  &__label {
     display: block;
     @include font-size--small($color-label);
   }
 
-  &__input{
+  &__input {
     width: 100%;
     @extend %form-input;
     @include font-size--normal($color-label);
+
     border-bottom: 1px solid $color-divider;
-    &::placeholder{
+    &::placeholder {
       color: $color-hint;
     }
 
-    &--planet{
+    &--planet {
       flex-grow: 1;
       background-color: transparent;
       @extend %form-input;
       @include font-size--normal($color-label);
-      &::placeholder{
+      &::placeholder {
         color: $color-hint;
       }
-
     }
 
-    &--focus{
+    &--focus {
       background-color: $color-input;
     }
   }
 
-  &__submit-btn{
+  &__submit-btn {
     padding: 0;
 
-    input{
+    input {
       width: 100%;
       font-size: 1.2rem;
       line-height: 1.6rem;
@@ -54,48 +54,49 @@
       background-color: $color-btn;
       padding: 0.5rem 3rem;
 
-      &:hover{
+      &:hover {
         cursor: pointer;
       }
     }
   }
 
-  &__title-section{
+  &__title-section {
     margin-top: 3.1rem;
     padding: 0;
     position: relative;
     background-color: white;
   }
 
-  &__save-list-section{
+  &__save-list-section {
     padding: 0;
 
-    &__planet-container{
+    &__planet-container {
       padding: 0;
     }
 
-    &__planet{
+    &__planet {
       border-radius: 18px;
-      border: 1px solid #999999;
+      border: 1px solid #999;
       padding: 0.5rem 1rem;
       font-style: normal;
       font-weight: normal;
       @include font-size--normal($color-text);
+
       margin-top: 1rem;
       display: flex;
       flex-flow: row nowrap;
       align-items: center;
       justify-content: space-between;
 
-      &__delete-btn{
-        &:hover{
+      &__delete-btn {
+        &:hover {
           cursor: pointer;
         }
       }
     }
   }
 
-  &__planet-section{
+  &__planet-section {
     margin-top: 1.7rem;
     padding: 0;
     position: relative;
@@ -108,25 +109,25 @@
       border-bottom: 1px solid $color-divider;
       background-color: white;
 
-      &--focus{
+      &--focus {
         background-color: $color-input;
       }
     }
   }
 
-  &__info-container{
+  &__info-container {
     margin-top: 2px;
     padding: 0.8rem;
     border: 1px solid $color-error;
 
-    &__error-message{
+    &__error-message {
       color: $color-error;
       font-size: 1.2rem;
       line-height: 1.4rem;
     }
   }
 
-  &__info-section{
+  &__info-section {
     padding: 0;
     z-index: 2;
     background-color: white;
@@ -134,12 +135,11 @@
     position: absolute;
     top: 5rem;
   }
-  &__info-section--hide{
+  &__info-section--hide {
     display: none;
   }
 
-
-  &__btn-section{
+  &__btn-section {
     display: flex;
     flex-flow: row nowrap;
     justify-content: flex-end;
@@ -149,7 +149,7 @@
     margin-bottom: 3.2rem;
   }
 
-  &__planet-list{
+  &__planet-list {
     margin-top: 2px;
     padding: 0.8rem;
     max-height: 10rem;
@@ -161,7 +161,7 @@
       width: 0.5rem;
     }
 
-    &::-webkit-scrollbar-thumb{
+    &::-webkit-scrollbar-thumb {
       background: $color-background;
       color: $color-background;
       border-radius: 5px;
@@ -174,16 +174,17 @@
       color: white;
     }
 
-    @include screen-sm{
+    @include screen-sm {
       max-height: 15rem;
     }
 
-    &__item{
+    &__item {
       margin-left: 0.5rem;
       @include font-size--normal($color-label);
+
       margin-bottom: 1rem;
       width: 100%;
-      &:hover{
+      &:hover {
         cursor: pointer;
       }
     }

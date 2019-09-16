@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 
 const Delete = () => (
   <svg width={13} height={13} fill="none">
@@ -9,4 +9,4 @@ const Delete = () => (
   </svg>
 );
 
-export {Delete}
+export { Delete };

@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 
 const Search = () => (
   <svg width={17} height={17} fill="none">
@@ -9,4 +9,4 @@ const Search = () => (
   </svg>
 );
 
-export {Search}
+export { Search };

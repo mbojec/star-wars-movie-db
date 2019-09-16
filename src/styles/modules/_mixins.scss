@@ -48,7 +48,9 @@
     & {
       font-size: $min-font-size;
       @media screen and (min-width: $min-vw) {
-        font-size: calc(#{$min-font-size} + #{strip-unit($max-font-size - $min-font-size)} * ((100vw - #{$min-vw}) / #{strip-unit($max-vw - $min-vw)}));
+        font-size: calc(
+          #{$min-font-size} + #{strip-unit($max-font-size - $min-font-size)} * ((100vw - #{$min-vw}) / #{strip-unit($max-vw - $min-vw)})
+        );
       }
       @media screen and (min-width: $max-vw) {
         font-size: $max-font-size;
@@ -57,12 +59,12 @@
   }
 }
 
-@mixin font-size--normal($color){
+@mixin font-size--normal($color) {
   font-size: 1.6rem;
   line-height: 1.9rem;
   color: $color;
 }
-@mixin font-size--small($color){
+@mixin font-size--small($color) {
   font-size: 12px;
   line-height: 14px;
   color: $color;
