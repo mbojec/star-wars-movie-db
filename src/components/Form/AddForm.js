@@ -18,9 +18,9 @@ const AddForm = () => {
   return (
     <div className={'card-container'}>
       <div className={cardClass}>
-        <div className={'card__title'}>
+        <div className={'card__title'} onClick={() => onCollapse()}>
           <p>Add</p>
-          <div className={'card__icon'} onClick={() => onCollapse()}>
+          <div className={'card__icon'}>
             <ArrowOpen />
           </div>
         </div>

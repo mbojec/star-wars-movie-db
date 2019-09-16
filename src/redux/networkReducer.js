@@ -80,7 +80,6 @@ const networkReducer = (state = initialState, action) => {
       return {
         ...state,
         queryPlanets: [],
-        savedQueryPlanets: [],
       };
     }
     default:
